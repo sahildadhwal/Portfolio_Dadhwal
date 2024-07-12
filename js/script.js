@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function openMailClient() {
     const email = "sahildadhwal2001@gmail.com";
-    const subject = "Came from Portfolio!";
+    const subject = "I Came from your Portfolio! :D";
     const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
     window.location.href = mailtoLink;
 }
