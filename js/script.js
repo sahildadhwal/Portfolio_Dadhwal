@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var modal = document.getElementById('system-preferences');
     var closeButton = document.getElementsByClassName('close')[0];
     var modalHeader = document.getElementsByClassName('modal-header')[0];
+    var backgroundPreviews = document.getElementById('background-previews');
 
     var isDragging = false;
     var offset = {x: 0, y: 0};
@@ -14,14 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hide modal only when clicking on close button
     closeButton.onclick = function() {
         modal.style.display = 'none';
-    }
-
-    // Apply selected background
-    document.getElementById('apply-background-btn').onclick = function() {
-        var backgroundSelect = document.getElementById('background-select');
-        var selectedBackground = backgroundSelect.value;
-        document.getElementById('desktop-background').style.backgroundImage = 'url(\'../images/' + selectedBackground + '\')';
-        modal.style.display = 'none'; // Close modal after applying background
     }
 
     // Function to handle mouse down event on modal header for dragging
@@ -46,16 +39,37 @@ document.addEventListener('DOMContentLoaded', function() {
         isDragging = false;
     });
 
-    // Prevent modal from closing when clicking outside or pressing Escape key
-    modal.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            event.stopPropagation(); // Prevent propagation of the click event
-        }
+    // Dynamically generate background previews
+    var backgrounds = ['background1.jpg', 'background2.jpg', 'background3.jpg'];
+    backgrounds.forEach(function(background) {
+        var preview = document.createElement('div');
+        preview.classList.add('background-preview');
+        var img = document.createElement('img');
+        img.src = 'images/' + background;
+        img.alt = background;
+        preview.appendChild(img);
+        backgroundPreviews.appendChild(preview);
+
+        // Add click event listener to apply selected background
+        preview.addEventListener('click', function() {
+            // Remove active class from all previews
+            var previews = document.querySelectorAll('.background-preview');
+            previews.forEach(function(p) {
+                p.classList.remove('active');
+            });
+            // Add active class to the clicked preview
+            preview.classList.add('active');
+        });
     });
 
-    document.addEventListener('keyup', function(event) {
-        if (event.key === 'Escape') {
-            event.stopPropagation(); // Prevent propagation of the Escape key press
+    // Apply selected background
+    document.getElementById('apply-background-btn').onclick = function() {
+        var selectedPreview = document.querySelector('.background-preview.active img');
+        if (selectedPreview) {
+            var selectedBackground = selectedPreview.alt;
+            document.getElementById('desktop-background').style.backgroundImage = 'url(\'../images/' + selectedBackground + '\')';
         }
-    });
+        modal.style.display = 'none'; // Close modal after applying background
+    };
+
 });
