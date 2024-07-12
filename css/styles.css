@@ -79,67 +79,97 @@ body {
     margin: 0 10px; /* Adjust margin between icons */
 }
 
+/* ======= */
+
 /* Photos Icon */
-.bottom-row img:nth-child(1) {
+.icon:nth-child(1) img {
     width: 54px; /* Adjust the width of the photos icon */
     height: auto; /* Adjust the height of the photos icon */
 }
 
 /* Music Icon */
-.bottom-row img:nth-child(2) {
+.icon:nth-child(2) img {
     width: 48px; /* Adjust the width of the music icon */
     height: auto; /* Adjust the height of the music icon */
 }
 
 /* Mail Icon */
-.bottom-row img:nth-child(3) {
+.icon:nth-child(3) img {
     width: 54px; /* Adjust the width of the mail icon */
     height: auto; /* Adjust the height of the mail icon */
 }
 
 /* Settings Icon */
-.bottom-row img:nth-child(4) {
+.icon:nth-child(4) img {
     width: 50px; /* Adjust the width of the settings icon */
     height: auto; /* Adjust the height of the settings icon */
 }
+/* ===== */
 
+/* CSS for tooltips */
+.tooltip {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Show tooltip on hover */
+.icon:hover .tooltip {
+    opacity: 1;
+}
+
+/* Adjust tooltip position and appearance */
+.icon {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+    cursor: pointer;
+}
 
 /* Tooltip */
 .tooltip {
     position: absolute;
-    top: -32px; /* Adjust positioning of tooltip relative to the music icon */
-    left: 37%;
+    top: 0px
+    left: 50%;
     transform: translateX(-50%);
     background-color: rgba(88, 87, 87,0.8);; /* Background color of the tooltip */
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
-    opacity: 0;
+    
+    white-space: nowrap; /* Ensures text stays on one line */
+    visibility: hidden;
 }
-
-
-
 
 /* Tooltip for Photos Icon */
 .bottom-row img:nth-child(1):hover ~ .tooltip {
+    top: -35px; 
     transition: opacity 0.1s ease;
-    opacity: 1; /* Show tooltip when Photos icon is hovered */
+    visibility: visible;
 }
 
 /* Tooltip for Music Icon */
 .bottom-row img:nth-child(2):hover ~ .tooltip {
+    top: -100px; 
     transition: opacity 0.1s ease;
-    opacity: 1; /* Show tooltip when music icon is hovered */
+    
 }
 
 /* Tooltip for Mail Icon */
 .bottom-row img:nth-child(3):hover ~ .tooltip {
+    top: -35px; /* Adjust positioning of tooltip relative to the music icon */
     transition: opacity 0.1s ease;
-    opacity: 1; /* Show tooltip when Mail icon is hovered */
 }
 
 /* Tooltip for System Preferences Icon */
 .bottom-row img:nth-child(4):hover ~ .tooltip {
+    top: -350px; /* Adjust positioning of tooltip relative to the music icon */
     transition: opacity 0.1s ease;
-    opacity: 1; /* Show tooltip when System Preferences icon is hovered */
 }
