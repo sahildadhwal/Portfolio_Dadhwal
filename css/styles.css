@@ -54,3 +54,49 @@ body {
     font-size: 14px;
     font-weight: bold; /* Make the folder text bold */
 }
+
+.bottom-row {
+    position: absolute;
+    bottom: 20px; /* Adjust the distance from the bottom */
+    left: calc(50% - 250px); /* Center the bottom row */
+    width: 500px; /* Adjust width as needed */
+    height: 60px; /* Adjust height as needed */
+    background-color: rgba(100, 100, 100, 0.8); /* Darker grey with transparency */
+    border-radius: 20px; /* Adjusted border-radius for less rounded corners */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
+}
+
+/* Bottom Row Default */
+.bottom-row img {
+    width: 50px; /* Adjust the width of the icons */
+    height: auto; /* Maintain aspect ratio */
+    cursor: pointer; /* Optional: add cursor pointer */
+    margin: 0 10px; /* Adjust margin between icons */
+}
+
+/* Photos Icon */
+.bottom-row img:nth-child(1) {
+    width: 54px; /* Adjust the width of the photos icon */
+    height: auto; /* Adjust the height of the photos icon */
+}
+
+/* Music Icon */
+.bottom-row img:nth-child(2) {
+    width: 48px; /* Adjust the width of the music icon */
+    height: auto; /* Adjust the height of the music icon */
+}
+
+/* Mail Icon */
+.bottom-row img:nth-child(3) {
+    width: 54px; /* Adjust the width of the mail icon */
+    height: auto; /* Adjust the height of the mail icon */
+}
+
+/* Settings Icon */
+.bottom-row img:nth-child(4) {
+    width: 50px; /* Adjust the width of the settings icon */
+    height: auto; /* Adjust the height of the settings icon */
+}
