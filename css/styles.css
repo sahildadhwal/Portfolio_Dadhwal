@@ -1,6 +1,11 @@
-body {
+/* Reset default styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: Arial, sans-serif;
     overflow: hidden;
     position: relative;
@@ -130,40 +135,39 @@ body {
     width: 300px; /* Set fixed width for the modal */
     max-width: 80%; /* Ensure modal does not exceed 80% of viewport width */
     background-color: #fefefe;
-    padding: 20px;
-    border: 1px solid #888;
+    padding: 20px; /* Add padding to the modal body */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Optional: add shadow for depth */
+    border-radius: 10px; /* Rounded corners */
     transition: transform 0.3s ease; /* Smooth transition for modal */
-    
 }
 
+/* Modal Header */
 .modal-header {
     background-color: #888; /* Grey background color for header */
     color: white; /* White text color */
-    height: 14px;
     padding: 10px 20px; /* Padding for header content */
+    border-top-left-radius: 10px; /* Rounded corners for top left */
+    border-top-right-radius: 10px; /* Rounded corners for top right */
+    position: relative; /* Ensure relative positioning for absolute children */
     margin: -20px -20px 20px -20px; /* Adjust margin to overlap border */
     border-bottom: 1px solid #666; /* Bottom border for header */
-    border-radius: 4px 4px 0 0; /* Rounded corners for top */
     cursor: move; /* Change cursor to indicate draggable area */
 }
 
-.h2
 .modal-title {
-    margin: 0;
-    font-size: 20px;
+    margin: 0; /* Reset margin */
+    font-size: 20px; /* Adjust font size */
 }
-
 
 .close {
     position: absolute;
-    left: 10px;
     top: 10px;
+    right: 10px;
     width: 20px; /* Smaller size */
     height: 20px; /* Smaller size */
     border-radius: 50%; /* Red circle */
     background-color: #FF605C;
-    color: transparent; /* Hide the text by default */
+    color: white; /* White text color */
     font-size: 14px; /* Smaller font size */
     display: flex;
     justify-content: center;
@@ -173,6 +177,13 @@ body {
     transition: background-color 0.3s ease; /* Smooth transition for background color */
 }
 
+.close:hover {
+    background-color: #FF433E; /* Darker red on hover */
+}
+
+.modal-body {
+    padding: 20px; /* Add padding to the modal body */
+}
 
 
 .close:hover,
