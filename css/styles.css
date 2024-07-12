@@ -152,6 +152,9 @@ body {
     margin: -20px -20px 20px -20px; /* Adjust margin to overlap border */
     border-bottom: 1px solid #666; /* Bottom border for header */
     cursor: move; /* Change cursor to indicate draggable area */
+    display: flex; /* Add flex display for alignment */
+    justify-content: space-between; /* Align items to the left and right */
+    align-items: center; /* Center items vertically */
 }
 
 .modal-title {
@@ -160,9 +163,6 @@ body {
 }
 
 .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
     width: 20px; /* Smaller size */
     height: 20px; /* Smaller size */
     border-radius: 50%; /* Red circle */
@@ -173,8 +173,8 @@ body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    z-index: 2;
     transition: background-color 0.3s ease; /* Smooth transition for background color */
+    margin-left: 0px; /* Add margin to the left for spacing */
 }
 
 .close:hover {
@@ -184,7 +184,6 @@ body {
 .modal-body {
     padding: 20px; /* Add padding to the modal body */
 }
-
 
 .close:hover,
 .close:focus {
