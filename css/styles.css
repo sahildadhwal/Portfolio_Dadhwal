@@ -196,6 +196,9 @@ body {
     color: white;
 }
 
+
+
+
 /* CSS to style background previews */
 .background-preview {
     display: inline-block;
@@ -210,5 +213,33 @@ body {
 }
 
 
+
+/* CSS for expanding the tab */
+.expand-tab {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 150px; /* Adjust max height as needed */
+    overflow-y: auto; /* Enable vertical scroll if needed */
+}
+
+.background-preview {
+    
+    width: 10vb; /* Adjust width of the preview images */
+    height: 50%; /* Maintain aspect ratio */
+    margin-right: 10px;
+    cursor: pointer;
+    transition: transform 0.1s ease; /* Smooth transition for transform */
+}
+
+.background-preview img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc; /* Optional: add a border for visual separation */
+}
+
+.background-preview.active {
+    transform: scale(1.2); /* Increase size on active */
+    z-index: 1; /* Ensure active preview is on top */
+}
 
 
