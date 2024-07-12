@@ -17,24 +17,38 @@
     </div>
     
     <div class="bottom-row">
-        <div class="icon">
+        <div class="icon" id="photos-icon">
             <img src="images/photos-icon.png" alt="Photos">
             <div class="tooltip">Photos</div>
         </div>
         
-        <div class="icon">
+        <div class="icon" id="music-icon">
             <img src="images/music-icon.png" alt="Music">
             <div class="tooltip">Music</div>
         </div>
         
-        <div class="icon">
+        <div class="icon" id="mail-icon">
             <img src="images/mail-icon.png" alt="Mail">
             <div class="tooltip">Mail</div>
         </div>
         
-        <div class="icon">
+        <div class="icon" id="system-preferences-icon">
             <img src="images/settings-icon.png" alt="Settings">
             <div class="tooltip">System Preferences</div>
+        </div>
+    </div>
+
+    <div id="system-preferences" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>System Preferences</h2>
+            <p>Select Background:</p>
+            <select id="background-select">
+                <option value="background1.jpg">Background 1</option>
+                <option value="background2.jpg">Background 2</option>
+                <option value="background3.jpg">Background 3</option>
+            </select>
+            <button id="apply-background-btn">Apply Background</button>
         </div>
     </div>
     
