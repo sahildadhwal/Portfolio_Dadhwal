@@ -62,14 +62,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Apply selected background
+    // Apply selected background without closing modal
     document.getElementById('apply-background-btn').onclick = function() {
         var selectedPreview = document.querySelector('.background-preview.active img');
         if (selectedPreview) {
             var selectedBackground = selectedPreview.alt;
-            document.getElementById('desktop-background').style.backgroundImage = 'url(\'../images/' + selectedBackground + '\')';
+            document.getElementById('desktop-background').style.backgroundImage = 'url(\'images/' + selectedBackground + '\')';
         }
-        modal.style.display = 'none'; // Close modal after applying background
     };
+
+    
+    // Apply selected background without closing modal
+    document.getElementById('save-background-button').onclick = function() {
+        var selectedPreview = document.querySelector('.background-preview.active img');
+        if (selectedPreview) {
+            var selectedBackground = selectedPreview.alt;
+            document.getElementById('desktop-background').style.backgroundImage = 'url(\'images/' + selectedBackground + '\')';
+        }
+        modal.style.display = 'none'; // close tab after save, unlike apply
+    };
+
+
 
 });
