@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.desktop-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/background1.jpg'); /* Change to your background image path */
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.icon-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: flex-start; /* Align items to the top */
+    padding: 20px; /* Optional: add some padding for spacing */
+    z-index: 1;
+}
+
+.icon {
+    text-align: center;
+    margin: 0; /* Remove any margin to position the icon at the top left */
+    cursor: pointer;
+    font-family: Helvetica, sans-serif; /* Use Helvetica font for folder names */
+}
+
+.icon img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+.icon span {
+    display: block;
+    color: white;
+    margin-top: -5px; /* Adjusted to -5px to move text closer to the image */
+    font-size: 14px;
+    font-weight: bold; /* Make the folder text bold */
+}
