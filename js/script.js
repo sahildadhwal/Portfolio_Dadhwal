@@ -1,87 +1,62 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var modal = document.getElementById('system-preferences');
-    var closeButton = document.getElementsByClassName('close')[0];
-    var modalHeader = document.getElementsByClassName('modal-header')[0];
-    var backgroundPreviews = document.getElementById('background-previews');
+document.addEventListener("DOMContentLoaded", () => {
+    const systemPreferencesIcon = document.getElementById("system-preferences-icon");
+    const systemPreferencesModal = document.getElementById("system-preferences");
+    const closeModalButton = systemPreferencesModal.querySelector(".close");
+    const desktopBackground = document.getElementById("desktop-background");
+    const backgroundPreviews = document.getElementById("background-previews");
+    const saveButton = document.getElementById("save-background-button");
+    const applyButton = document.getElementById("apply-background-btn");
 
-    var isDragging = false;
-    var offset = {x: 0, y: 0};
+    const backgrounds = [
+        { src: "images/background1.jpg", alt: "Background 1" },
+        { src: "images/background2.jpg", alt: "Background 2" },
+        { src: "images/background3.jpg", alt: "Background 3" },
+        { src: "images/background4.jpg", alt: "Background 4" }
+    ];
 
-    // Show modal when clicking on System Preferences icon
-    document.getElementById('system-preferences-icon').onclick = function() {
-        modal.style.display = 'block';
-    }
+    let selectedBackground = "";
 
-    // Hide modal only when clicking on close button
-    closeButton.onclick = function() {
-        modal.style.display = 'none';
-    }
-
-    // Function to handle mouse down event on modal header for dragging
-    modalHeader.addEventListener('mousedown', function(e) {
-        isDragging = true;
-        // Calculate offset relative to the top-left corner of the modal
-        offset.x = e.clientX - modal.offsetLeft;
-        offset.y = e.clientY - modal.offsetTop;
-    });
-
-    // Function to handle mouse move event when dragging
-    document.addEventListener('mousemove', function(e) {
-        if (isDragging) {
-            // Update modal position based on mouse movement
-            modal.style.left = (e.clientX - offset.x) + 'px';
-            modal.style.top = (e.clientY - offset.y) + 'px';
-        }
-    });
-
-    // Function to handle mouse up event to stop dragging
-    document.addEventListener('mouseup', function() {
-        isDragging = false;
-    });
-
-    // Dynamically generate background previews
-    var backgrounds = ['background1.jpg', 'background2.jpg', 'background3.jpg'];
-    backgrounds.forEach(function(background) {
-        var preview = document.createElement('div');
-        preview.classList.add('background-preview');
-        var img = document.createElement('img');
-        img.src = 'images/' + background;
-        img.alt = background;
-        preview.appendChild(img);
+    backgrounds.forEach(background => {
+        const preview = document.createElement("div");
+        preview.classList.add("background-preview");
+        preview.innerHTML = `<img src="${background.src}" alt="${background.alt}" data-src="${background.src}">`;
         backgroundPreviews.appendChild(preview);
 
-        // Add click event listener to apply selected background
-        preview.addEventListener('click', function() {
-            // Remove active class from all previews
-            var previews = document.querySelectorAll('.background-preview');
-            previews.forEach(function(p) {
-                p.classList.remove('active');
-            });
-            // Add active class to the clicked preview
-            preview.classList.add('active');
+        preview.addEventListener("click", (event) => {
+            const target = event.target;
+            selectedBackground = target.getAttribute("data-src");
+
+            const previews = backgroundPreviews.querySelectorAll("img");
+            previews.forEach(img => img.style.border = "1px solid #ccc");
+            target.style.border = "3px solid #007bff";
         });
     });
 
-    // Apply selected background without closing modal
-    document.getElementById('apply-background-btn').onclick = function() {
-        var selectedPreview = document.querySelector('.background-preview.active img');
-        if (selectedPreview) {
-            var selectedBackground = selectedPreview.alt;
-            document.getElementById('desktop-background').style.backgroundImage = 'url(\'images/' + selectedBackground + '\')';
+    systemPreferencesIcon.addEventListener("click", () => {
+        systemPreferencesModal.style.display = "block";
+    });
+
+    closeModalButton.addEventListener("click", () => {
+        systemPreferencesModal.style.display = "none";
+    });
+
+    applyButton.addEventListener("click", () => {
+        if (selectedBackground) {
+            desktopBackground.style.backgroundImage = `url(${selectedBackground})`;
         }
-    };
+    });
 
-    
-    // Apply selected background without closing modal
-    document.getElementById('save-background-button').onclick = function() {
-        var selectedPreview = document.querySelector('.background-preview.active img');
-        if (selectedPreview) {
-            var selectedBackground = selectedPreview.alt;
-            document.getElementById('desktop-background').style.backgroundImage = 'url(\'images/' + selectedBackground + '\')';
+    saveButton.addEventListener("click", () => {
+        if (selectedBackground) {
+            desktopBackground.style.backgroundImage = `url(${selectedBackground})`;
+            systemPreferencesModal.style.display = "none";
         }
-        modal.style.display = 'none'; // close tab after save, unlike apply
-    };
-
-
-
+    });
 });
+
+function openMailClient() {
+    const email = "sahildadhwal2001@gmail.com";
+    const subject = "Came from Portfolio!";
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+    window.location.href = mailtoLink;
+}
