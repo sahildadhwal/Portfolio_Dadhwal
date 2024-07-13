@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { src: "images/background1.jpg", alt: "Background 1" },
         { src: "images/background2.jpg", alt: "Background 2" },
         { src: "images/background3.jpg", alt: "Background 3" },
-        { src: "images/background4.jpg", alt: "Background 4" }
+        // { src: "images/background4.jpg", alt: "Background 4" }
     ];
 
     let selectedBackground = "";
@@ -51,6 +51,15 @@ document.addEventListener("DOMContentLoaded", () => {
             desktopBackground.style.backgroundImage = `url(${selectedBackground})`;
             systemPreferencesModal.style.display = "none";
         }
+    });
+
+    // Play audio1.mp3 when music icon is clicked
+    const musicIcon = document.getElementById("music-icon");
+    musicIcon.addEventListener("click", () => {
+        const audioElement = document.getElementById("audio-element");
+        audioElement.src = "audio/Feel It by d4vd.mp3"; // Set the audio source
+        
+        audioElement.play(); // Play the audio
     });
 });
 
