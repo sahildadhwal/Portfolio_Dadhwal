@@ -190,13 +190,15 @@ document.addEventListener("DOMContentLoaded", () => {
         audioDetailsContainer.innerHTML = "";
         createAudioItems();
     });
-    /* Should the user have to press pause to stop music?
+    
+    /* Delete chuck if you want music to only stop if user presses pause. */
+    // Stops music when user exits apple music app
     const closeModalMusicPlayer = musicPlayerModal.querySelector(".close");
     closeModalMusicPlayer.addEventListener("click", () => {
         musicPlayerModal.style.display = "none";
         audioDetailsContainer.innerHTML = ""; // Clear audio items when closing modal
     });
-    */
+    
 
     // Mail Icon
     const mailIcon = document.getElementById("mail-icon");
