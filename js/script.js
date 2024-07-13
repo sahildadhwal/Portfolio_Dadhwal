@@ -10,8 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const backgrounds = [
         { src: "images/background1.jpg", alt: "Background 1" },
         { src: "images/background2.jpg", alt: "Background 2" },
-        { src: "images/background3.jpg", alt: "Background 3" },
-        // { src: "images/background4.jpg", alt: "Background 4" }
+        { src: "images/background3.jpg", alt: "Background 3" }
     ];
 
     let selectedBackground = "";
@@ -53,19 +52,82 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Play audio1.mp3 when music icon is clicked
+    // Music Player
     const musicIcon = document.getElementById("music-icon");
-    musicIcon.addEventListener("click", () => {
-        const audioElement = document.getElementById("audio-element");
-        audioElement.src = "audio/Feel It by d4vd.mp3"; // Set the audio source
-        
-        audioElement.play(); // Play the audio
-    });
-});
+    const musicPlayerModal = document.getElementById("music-player");
+    const audioDetailsContainer = document.getElementById("audio-details");
 
-function openMailClient() {
-    const email = "sahildadhwal2001@gmail.com";
-    const subject = "I Came from your Portfolio! :D";
-    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
-    window.location.href = mailtoLink;
-}
+    // Array of audio details
+    const audioDetails = [
+        { song: "Feel It", artist: "d4vd", src: "audio/Feel It by d4vd.mp3" },
+        { song: "Meet Me Halfway", artist: "Black Eyed Peas", src: "audio/Meet Me Halfway by Black Eyed Peas.mp3" },
+        { song: "Sweater Weather", artist: "The Neighbourhood", src: "audio/Sweater Weather by The Neighbourhood.mp3" },
+        { song: "Trophies", artist: "Drake", src: "audio/Trophies by Drake.mp3" },
+        { song: "Not Like Us", artist: "Kendrick Lamar", src: "audio/Not Like Us by Kendrick Lamar.mp3" }
+    ];
+
+    // Function to create audio items
+    function createAudioItems() {
+        audioDetails.forEach((audio, index) => {
+            const audioItem = document.createElement("div");
+            audioItem.classList.add("audio-item");
+            audioItem.innerHTML = `
+                <p>${audio.song} - ${audio.artist}</p>
+                <div class="audio-controls">
+                    <audio src="${audio.src}" id="audio-${index}"></audio>
+                    <button class="play-pause-btn" data-index="${index}">Play</button>
+                </div>
+            `;
+            audioDetailsContainer.appendChild(audioItem);
+
+            const audioElement = audioItem.querySelector(`#audio-${index}`);
+            const playPauseBtn = audioItem.querySelector(".play-pause-btn");
+
+            playPauseBtn.addEventListener("click", () => {
+                if (audioElement.paused) {
+                    audioElement.play();
+                    playPauseBtn.textContent = "Pause";
+                } else {
+                    audioElement.pause();
+                    playPauseBtn.textContent = "Play";
+                }
+            });
+        });
+    }
+
+    musicIcon.addEventListener("click", () => {
+        musicPlayerModal.style.display = "block";
+        createAudioItems();
+    });
+
+    const closeModalMusicPlayer = musicPlayerModal.querySelector(".close");
+    closeModalMusicPlayer.addEventListener("click", () => {
+        musicPlayerModal.style.display = "none";
+        audioDetailsContainer.innerHTML = ""; // Clear audio items when closing modal
+    });
+
+    window.addEventListener("click", (event) => {
+        if (event.target === musicPlayerModal) {
+            musicPlayerModal.style.display = "none";
+            audioDetailsContainer.innerHTML = ""; // Clear audio items when closing modal
+        }
+    });
+
+    // Mail Icon
+    const mailIcon = document.getElementById("mail-icon");
+    mailIcon.addEventListener("click", () => {
+        openMailClient();
+    });
+
+    function openMailClient() {
+        const email = "sahildadhwal2001@gmail.com";
+        const subject = "I Came from your Portfolio! :D";
+        const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+        window.location.href = mailtoLink;
+    }
+
+
+
+
+    
+});

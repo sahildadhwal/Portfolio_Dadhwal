@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <div id="system-preferences" class="modal">
+     <div id="system-preferences" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="close"></div> <!-- Red circle close button -->
@@ -54,11 +54,18 @@
         </div>
     </div>
 
-    <!-- Audio element to play audio1.mp3 -->
-    <audio id="audio-element" autoplay>
-        <source src="audio/Feel It by d4vd.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+
+    <div id="music-player" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="close"></div>
+                <h2>Music Player</h2>
+            </div>
+            <div id="audio-details">
+                <!-- Audio details will be dynamically generated here -->
+            </div>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
