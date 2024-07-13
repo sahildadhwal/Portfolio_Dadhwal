@@ -263,7 +263,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeModalMusicPlayer = musicPlayerModal.querySelector(".close");
     closeModalMusicPlayer.addEventListener("click", () => {
         musicPlayerModal.style.display = "none";
-        audioDetailsContainer.innerHTML = ""; // Clear audio items when closing modal
+        currentAudioElement.pause();
+        playPauseButton.innerHTML = '<i class="fa fa-play-circle"></i>';
+        
+
     });
     
 
