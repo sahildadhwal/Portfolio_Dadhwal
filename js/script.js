@@ -447,3 +447,29 @@ document.addEventListener("DOMContentLoaded", () => {
         // Optionally clear gallery content here
     });
 });
+
+
+
+
+
+// PROJECTS FOLDER
+// JavaScript to show and close modals
+function showModal(modalId) {
+    var modal = document.getElementById(modalId);
+    modal.style.display = 'block';
+}
+
+function closeModal(modalId) {
+    var modal = document.getElementById(modalId);
+    modal.style.display = 'none';
+}
+
+// Optional: Add event listeners to close modals when clicking outside of them
+window.onclick = function(event) {
+    var modals = document.getElementsByClassName('modal');
+    for (var i = 0; i < modals.length; i++) {
+        if (event.target == modals[i]) {
+            modals[i].style.display = 'none';
+        }
+    }
+}

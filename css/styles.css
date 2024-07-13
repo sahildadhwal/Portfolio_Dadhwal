@@ -146,12 +146,18 @@ body {
     height: 500px; /* Desired height for the system modal */
 }
 
-
-
 .gallery-modal {
     width: 800px;  /* Desired width for the gallery modal */
     height: 500px; /* Desired height for the gallery modal */
 }
+
+
+.project-modal {
+    width: 500px;  /* Desired width for the system modal */
+    height: 500px; /* Desired height for the system modal */
+}
+
+
 
 
 

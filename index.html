@@ -12,9 +12,10 @@
     <div class="desktop-background" id="desktop-background"></div>
     
     <div class="icon-container">
-        <div class="icon" id="projects-icon">
+        <div class="icon" id="projects-icon" onclick="showModal('project-modal')">
             <img src="images/icons/projects-icon.png" alt="Projects">
             <span>Projects</span>
+
         </div>
         
         <div class="icon" id="resume-icon">
@@ -112,6 +113,25 @@
             </div>
         </div>
     </div>
+
+
+
+    <!-- PROJECTS FOLDER -->
+    <div id="project-modal" class="modal project-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="close" onclick="closeModal('project-modal')"></div> <!-- Red circle close button -->
+                <h2>Projects</h2> <!-- Title in grey bar -->
+            </div>
+            <div class="modal-body">
+                <p>Please look at the resume PDF file. This section is in progress. :)</p>
+            </div>
+        </div>
+    </div>
+    
+
+
+
 
     <script src="js/script.js"></script>
 </body>
