@@ -190,6 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const musicIcon = document.getElementById("music-icon");
     const musicPlayerModal = document.getElementById("music-player");
     const audioDetailsContainer = document.getElementById("audio-details");
+    const playPauseButton = document.getElementById("play-pause-btn");
 
     // Array of audio details
     const audioDetails = [
@@ -200,6 +201,9 @@ document.addEventListener("DOMContentLoaded", () => {
         { song: "Not Like Us", artist: "Kendrick Lamar", src: "audio/Not Like Us by Kendrick Lamar.mp3" }
     ];
 
+    let currentAudioIndex = null;
+    let currentAudioElement = null;
+
     // Function to create audio items
     function createAudioItems() {
         
@@ -208,29 +212,34 @@ document.addEventListener("DOMContentLoaded", () => {
             audioItem.classList.add("audio-item");
             audioItem.innerHTML = `
                 <p>${audio.song} - ${audio.artist}</p>
-                <div class="audio-controls">
-                    <audio src="${audio.src}" id="audio-${index}"></audio>
-                    <button class="play-pause-btn" data-index="${index}">Play</button>
-                </div>
             `;
-            
             
             audioDetailsContainer.appendChild(audioItem);
 
-            const audioElement = audioItem.querySelector(`#audio-${index}`);
-            const playPauseBtn = audioItem.querySelector(".play-pause-btn");
-
-            playPauseBtn.addEventListener("click", () => {
-                if (audioElement.paused) {
-                    audioElement.play();
-                    playPauseBtn.textContent = "Pause";
-                } else {
-                    audioElement.pause();
-                    playPauseBtn.textContent = "Play";
+            // Add click event to select the audio
+            audioItem.addEventListener("click", () => {
+                if (currentAudioElement) {
+                    currentAudioElement.pause();
                 }
+                currentAudioIndex = index;
+                currentAudioElement = new Audio(audio.src);
+                playPauseButton.textContent = "Pause";
+                currentAudioElement.play();
             });
         });
     }
+
+    playPauseButton.addEventListener("click", () => {
+        if (currentAudioElement) {
+            if (currentAudioElement.paused) {
+                currentAudioElement.play();
+                playPauseButton.textContent = "Pause";
+            } else {
+                currentAudioElement.pause();
+                playPauseButton.textContent = "Play";
+            }
+        }
+    });
 
     musicIcon.addEventListener("click", () => {
         musicPlayerModal.style.display = "block";
