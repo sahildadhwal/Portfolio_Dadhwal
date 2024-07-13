@@ -139,9 +139,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const applyButton = document.getElementById("apply-background-btn");
     
     const backgrounds = [
-        { src: "images/background1.jpg", alt: "Background 1" },
-        { src: "images/background2.jpg", alt: "Background 2" },
-        { src: "images/background3.jpg", alt: "Background 3" }
+        { src: "images/wallpaper/background1.jpg", alt: "Background 1" },
+        { src: "images/wallpaper/background2.jpg", alt: "Background 2" },
+        { src: "images/wallpaper/background3.jpg", alt: "Background 3" }
     ];
 
 
