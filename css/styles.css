@@ -206,19 +206,23 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer; /* Add cursor pointer to indicate clickable */
 }
 
 .audio-item p {
     margin: 0;
 }
 
+.audio-item.selected {
+    background-color: #007bff;
+    color: white;
+}
+
 .audio-controls {
-    display: flex;
-    align-items: center;
+    display: none; /* Hide individual play/pause buttons */
 }
 
 .audio-controls button {
-    margin-left: 10px;
     cursor: pointer;
 }
 
