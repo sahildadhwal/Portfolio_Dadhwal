@@ -233,6 +233,8 @@ body {
 #music-controls {
     display: flex;
     align-items: center;
+    justify-content: center;
+
 }
 
 #play-pause-btn {
@@ -240,7 +242,7 @@ body {
     border: none;
     cursor: pointer;
     font-size: 24px;
-    color: #007bff;
+
 }
 
 #play-pause-btn:focus {
@@ -253,6 +255,26 @@ body {
 
 #play-pause-icon {
     transition: transform 0.2s ease-in-out;
+}
+
+
+
+
+/* Apply and Save buttons styling */
+#apply-background-btn, #save-background-button {
+    background-color: #FF605C;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#apply-background-btn:hover, #save-background-button:hover {
+    background-color: #E6523A; /* Darken the color on hover */
 }
 
 
