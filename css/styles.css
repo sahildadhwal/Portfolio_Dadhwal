@@ -46,7 +46,20 @@ body {
     position: relative;
     display: inline-block;
     transition: transform 0.3s ease;
+    
+
 }
+
+
+/* Change size of resume icon to match Projects folder size */
+.icon-container .icon#resume-icon img {
+    padding: 10px;
+    
+    
+    /* Add any additional styling here */
+}
+
+
 
 .icon img {
     width: 100px;
