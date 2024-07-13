@@ -125,6 +125,46 @@ document.addEventListener('DOMContentLoaded', function() {
         isResumeViewerDragging = false;
     });
 
+    // ************************* Drag Photo Gallery
+    var photosGalleryModal = document.getElementById('photos-gallery');
+    var photosGalleryCloseButton = photosGalleryModal.querySelector('.close');
+    var photosGalleryModalHeader = photosGalleryModal.querySelector('.modal-header');
+
+    var isPhotosGalleryDragging = false;
+    var photosGalleryOffset = {x: 0, y: 0};
+
+    // Show modal when clicking on Photos icon
+    document.getElementById('photos-icon').onclick = function() {
+        photosGalleryModal.style.display = 'block';
+    }
+
+    // Hide modal only when clicking on close button
+    photosGalleryCloseButton.onclick = function() {
+        photosGalleryModal.style.display = 'none';
+    }
+
+    // Function to handle mouse down event on modal header for dragging
+    photosGalleryModalHeader.addEventListener('mousedown', function(e) {
+        isPhotosGalleryDragging = true;
+        // Calculate offset relative to the top-left corner of the modal
+        photosGalleryOffset.x = e.clientX - photosGalleryModal.offsetLeft;
+        photosGalleryOffset.y = e.clientY - photosGalleryModal.offsetTop;
+    });
+
+    // Function to handle mouse move event when dragging
+    document.addEventListener('mousemove', function(e) {
+        if (isPhotosGalleryDragging) {
+            // Update modal position based on mouse movement
+            photosGalleryModal.style.left = (e.clientX - photosGalleryOffset.x) + 'px';
+            photosGalleryModal.style.top = (e.clientY - photosGalleryOffset.y) + 'px';
+        }
+    });
+
+    // Function to handle mouse up event to stop dragging
+    document.addEventListener('mouseup', function() {
+        isPhotosGalleryDragging = false;
+    });
+
 });
 
 
@@ -306,6 +346,8 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open('https://www.linkedin.com/in/sahildadhwal/', '_blank');
     }
 });
+
+
 
 
 
