@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hide modal only when clicking on close button
     systemPreferencesCloseButton.onclick = function() {
         systemPreferencesModal.style.display = 'none';
+        systemPreferencesModal.style.top = '500px';
+        systemPreferencesModal.style.left = '900px';
+
     }
 
     // Function to handle mouse down event on modal header for dragging
@@ -50,6 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show modal when clicking on Music icon
     document.getElementById('music-icon').onclick = function() {
         musicPlayerModal.style.display = 'block';
+        musicPlayerModal.style.top = '500px';
+        musicPlayerModal.style.left = '1700px';
+
     }
 
     // Hide modal only when clicking on close button
