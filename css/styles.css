@@ -136,8 +136,24 @@ body {
 
     resize: both;
     overflow: auto;
+
+    
   
 }
+
+.system-modal {
+    width: 500px;  /* Desired width for the system modal */
+    height: 500px; /* Desired height for the system modal */
+}
+
+
+
+.gallery-modal {
+    width: 800px;  /* Desired width for the gallery modal */
+    height: 500px; /* Desired height for the gallery modal */
+}
+
+
 
 .modal-header {
     background-color: #888;
@@ -396,8 +412,9 @@ body {
 /* Example CSS for Photo Gallery */
 #gallery {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap:wrap;
     gap: 10px; /* Adjust the gap between photos */
+    
     
 }
 

@@ -10,8 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show modal when clicking on System Preferences icon
     document.getElementById('system-preferences-icon').onclick = function() {
         systemPreferencesModal.style.display = 'block';
+        // SETTINGS SPAWN
         systemPreferencesModal.style.top = '500px';
-        systemPreferencesModal.style.left = '1000px';
+        systemPreferencesModal.style.left = '1200px';
     }
 
     // Hide modal only when clicking on close button
@@ -54,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show modal when clicking on Music icon
     document.getElementById('music-icon').onclick = function() {
         musicPlayerModal.style.display = 'block';
+        // MUSIC SPAWN
         musicPlayerModal.style.top = '500px';
         musicPlayerModal.style.left = '1700px';
 
@@ -97,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show modal when clicking on Resume icon
     document.getElementById('resume-icon').onclick = function() {
         resumeViewerModal.style.display = 'block';
-        // SET SPAWN HERE        
+        // SET RESUME SPAWN HERE        
 
     }
 
@@ -141,8 +143,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show modal when clicking on Photos icon
     document.getElementById('photos-icon').onclick = function() {
         photosGalleryModal.style.display = 'block';
+        // PHOTOS SPAWN
         photosGalleryModal.style.top = '400px';
-        photosGalleryModal.style.left = '400px';
+        photosGalleryModal.style.left = '500px';
     }
 
     // Hide modal only when clicking on close button
@@ -188,13 +191,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const saveButton = document.getElementById("save-background-button");
     const applyButton = document.getElementById("apply-background-btn");
     
-    const backgrounds = [
-        { src: "images/wallpaper/background1.jpg", alt: "Background 1" },
-        { src: "images/wallpaper/background2.jpg", alt: "Background 2" },
-        { src: "images/wallpaper/background3.jpg", alt: "Background 3" }
-    ];
-
     
+
+    const backgrounds = [];
+    const numberOfBackgrounds = 12; // Adjust this number as needed
+
+    for (let i = 1; i <= numberOfBackgrounds; i++) {
+        backgrounds.push({ src: `images/wallpaper/background${i}.jpg`, alt: `Background ${i}` });
+    }
+
+
+
+
+
+
     let selectedBackground = "";
 
     backgrounds.forEach(background => {
@@ -371,18 +381,26 @@ document.addEventListener('DOMContentLoaded', function() {
 //
 // 
 
-const photosIcon = document.getElementById("photos-icon");
-const photosGalleryModal = document.getElementById("photos-gallery");
-
-
 document.addEventListener("DOMContentLoaded", () => {
     // Array of photo details
-    const photos = [
-        { src: "images/photos/photo1.png", alt: "Photo 1" },
-        { src: "images/photos/photo2.png", alt: "Photo 2" },
-        { src: "images/photos/photo3.png", alt: "Photo 3" }
-        // Add more photos as needed
-    ];
+    const photos = [];
+    const numberOfPhotos = 20; // Adjust this number as needed
+
+    for (let i = 1; i <= numberOfPhotos; i++) {
+        photos.push({ src: `images/photos/photo${i}.jpg`, alt: `Photo ${i}` });
+    }
+
+
+
+
+
+    // Function to preload images
+    function preloadImages(sources) {
+        sources.forEach(source => {
+            var image = new Image();
+            image.src = source.src;
+        });
+    }
 
     // Function to create photo items in the gallery
     function createPhotoGallery() {
@@ -395,11 +413,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Create image preview
             const imgPreview = document.createElement("div");
-            //  HERERERERE
             imgPreview.classList.add("photo-preview");
-            //imgPreview.classList.add("gallery");
-            
-            
             imgPreview.style.backgroundImage = `url(${photo.src})`;
 
             photoItem.appendChild(imgPreview);
@@ -413,6 +427,9 @@ document.addEventListener("DOMContentLoaded", () => {
             gallery.appendChild(photoItem);
         });
     }
+
+    // Preload images before displaying the gallery
+    preloadImages(photos);
 
     // Show photos gallery modal when clicking on Photos icon
     const photosIcon = document.getElementById("photos-icon");
