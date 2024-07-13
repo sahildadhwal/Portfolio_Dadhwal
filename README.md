@@ -1,6 +1,8 @@
 # Sahil Dadhwal's Portfolio Site
 
-Welcome to my portfolio site! This project is currently under development, created during my free time while interning at BTIS as a Data Engineer. The goal is to replicate the aesthetics of a Macintosh device while showcasing my skills in various areas such as X, Y, and Z.
+Welcome to my portfolio site! This project is currently under development, created during my free time while interning at BTIS as a Data Engineer. The goal is to replicate the aesthetics of a Macintosh device while showcasing my skills in various areas such as data engineering, web development, and software design.
+
+As of now, the portfolio is constructed using HTML, CSS, and Vanilla JS.
 
 ## Features
 
