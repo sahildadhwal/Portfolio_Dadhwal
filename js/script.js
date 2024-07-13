@@ -232,9 +232,6 @@ document.addEventListener("DOMContentLoaded", () => {
         systemPreferencesModal.style.display = "none";
     });
 
-
-
-
     // Double click does the same as apply. 
     // Add double-click event listener to apply the background
     backgroundPreviews.addEventListener("dblclick", () => {
