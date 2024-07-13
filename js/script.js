@@ -1,4 +1,3 @@
-// Drag 
 document.addEventListener('DOMContentLoaded', function() {
     // ************************* Drag System Preferences Tab 
     var systemPreferencesModal = document.getElementById('system-preferences');
@@ -79,7 +78,49 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('mouseup', function() {
         isMusicPlayerDragging = false;
     });
+
+    // ************************* Drag Resume Viewer
+    var resumeViewerModal = document.getElementById('resume-viewer');
+    var resumeViewerCloseButton = resumeViewerModal.querySelector('.close');
+    var resumeViewerModalHeader = resumeViewerModal.querySelector('.modal-header');
+
+    var isResumeViewerDragging = false;
+    var resumeViewerOffset = {x: 0, y: 0};
+
+    // Show modal when clicking on Resume icon
+    document.getElementById('resume-icon').onclick = function() {
+        resumeViewerModal.style.display = 'block';
+    }
+
+    // Hide modal only when clicking on close button
+    resumeViewerCloseButton.onclick = function() {
+        resumeViewerModal.style.display = 'none';
+    }
+
+    // Function to handle mouse down event on modal header for dragging
+    resumeViewerModalHeader.addEventListener('mousedown', function(e) {
+        isResumeViewerDragging = true;
+        // Calculate offset relative to the top-left corner of the modal
+        resumeViewerOffset.x = e.clientX - resumeViewerModal.offsetLeft;
+        resumeViewerOffset.y = e.clientY - resumeViewerModal.offsetTop;
+    });
+
+    // Function to handle mouse move event when dragging
+    document.addEventListener('mousemove', function(e) {
+        if (isResumeViewerDragging) {
+            // Update modal position based on mouse movement
+            resumeViewerModal.style.left = (e.clientX - resumeViewerOffset.x) + 'px';
+            resumeViewerModal.style.top = (e.clientY - resumeViewerOffset.y) + 'px';
+        }
+    });
+
+    // Function to handle mouse up event to stop dragging
+    document.addEventListener('mouseup', function() {
+        isResumeViewerDragging = false;
+    });
+
 });
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -217,4 +258,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Show resume viewer modal when clicking on resume icon
+    document.getElementById('resume-icon').onclick = function() {
+        document.getElementById('resume-viewer').style.display = 'block';
+    }
+
+    // Hide resume viewer modal when clicking on close button
+    document.querySelector('#resume-viewer .close').onclick = function() {
+        document.getElementById('resume-viewer').style.display = 'none';
+    }
 });

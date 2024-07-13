@@ -267,3 +267,73 @@ body {
     transform: scale(1.2); /* Increase size on active */
     z-index: 1; /* Ensure active preview is on top */
 }
+
+
+
+
+
+
+/* Styling for the resume viewer modal */
+#resume-viewer {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 900px;
+    background-color: #fefefe;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+#resume-viewer .modal-content {
+    height: 100%;
+}
+
+#resume-viewer .modal-header {
+    background-color: #888;
+    color: white;
+    padding: 10px 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+    margin: -20px -20px 20px -20px;
+    border-bottom: 1px solid #666;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#resume-viewer .close {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #FF605C;
+    color: white;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 0px;
+}
+
+#resume-viewer .close:hover {
+    background-color: #FF433E;
+}
+
+#resume-viewer .modal-body {
+    padding: 20px;
+}
+
+/* Responsive styling for the PDF viewer */
+@media (max-width: 768px) {
+    #resume-viewer {
+        width: 95%;
+    }
+}
