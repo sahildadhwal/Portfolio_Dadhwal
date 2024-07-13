@@ -1,3 +1,86 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // ************************* Drag System Preferences Tab 
+    var systemPreferencesModal = document.getElementById('system-preferences');
+    var systemPreferencesCloseButton = systemPreferencesModal.querySelector('.close');
+    var systemPreferencesModalHeader = systemPreferencesModal.querySelector('.modal-header');
+
+    var isSystemPreferencesDragging = false;
+    var systemPreferencesOffset = {x: 0, y: 0};
+
+    // Show modal when clicking on System Preferences icon
+    document.getElementById('system-preferences-icon').onclick = function() {
+        systemPreferencesModal.style.display = 'block';
+    }
+
+    // Hide modal only when clicking on close button
+    systemPreferencesCloseButton.onclick = function() {
+        systemPreferencesModal.style.display = 'none';
+    }
+
+    // Function to handle mouse down event on modal header for dragging
+    systemPreferencesModalHeader.addEventListener('mousedown', function(e) {
+        isSystemPreferencesDragging = true;
+        // Calculate offset relative to the top-left corner of the modal
+        systemPreferencesOffset.x = e.clientX - systemPreferencesModal.offsetLeft;
+        systemPreferencesOffset.y = e.clientY - systemPreferencesModal.offsetTop;
+    });
+
+    // Function to handle mouse move event when dragging
+    document.addEventListener('mousemove', function(e) {
+        if (isSystemPreferencesDragging) {
+            // Update modal position based on mouse movement
+            systemPreferencesModal.style.left = (e.clientX - systemPreferencesOffset.x) + 'px';
+            systemPreferencesModal.style.top = (e.clientY - systemPreferencesOffset.y) + 'px';
+        }
+    });
+
+    // Function to handle mouse up event to stop dragging
+    document.addEventListener('mouseup', function() {
+        isSystemPreferencesDragging = false;
+    });
+
+    // ************************* Drag Music Tab
+    var musicPlayerModal = document.getElementById('music-player');
+    var musicPlayerCloseButton = musicPlayerModal.querySelector('.close');
+    var musicPlayerModalHeader = musicPlayerModal.querySelector('.modal-header');
+
+    var isMusicPlayerDragging = false;
+    var musicPlayerOffset = {x: 0, y: 0};
+
+    // Show modal when clicking on Music icon
+    document.getElementById('music-icon').onclick = function() {
+        musicPlayerModal.style.display = 'block';
+    }
+
+    // Hide modal only when clicking on close button
+    musicPlayerCloseButton.onclick = function() {
+        musicPlayerModal.style.display = 'none';
+    }
+
+    // Function to handle mouse down event on modal header for dragging
+    musicPlayerModalHeader.addEventListener('mousedown', function(e) {
+        isMusicPlayerDragging = true;
+        // Calculate offset relative to the top-left corner of the modal
+        musicPlayerOffset.x = e.clientX - musicPlayerModal.offsetLeft;
+        musicPlayerOffset.y = e.clientY - musicPlayerModal.offsetTop;
+    });
+
+    // Function to handle mouse move event when dragging
+    document.addEventListener('mousemove', function(e) {
+        if (isMusicPlayerDragging) {
+            // Update modal position based on mouse movement
+            musicPlayerModal.style.left = (e.clientX - musicPlayerOffset.x) + 'px';
+            musicPlayerModal.style.top = (e.clientY - musicPlayerOffset.y) + 'px';
+        }
+    });
+
+    // Function to handle mouse up event to stop dragging
+    document.addEventListener('mouseup', function() {
+        isMusicPlayerDragging = false;
+    });
+});
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const systemPreferencesIcon = document.getElementById("system-preferences-icon");
     const systemPreferencesModal = document.getElementById("system-preferences");
@@ -14,75 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
 
-    // *************************
-    var modal = document.getElementById('system-preferences');
-    var closeButton = document.getElementsByClassName('close')[0];
-    var modalHeader = document.getElementsByClassName('modal-header')[0];
-
-    var isDragging = false;
-    var offset = {x: 0, y: 0};
-    // Show modal when clicking on System Preferences icon
-    document.getElementById('system-preferences-icon').onclick = function() {
-        modal.style.display = 'block';
-    }
-    // Hide modal only when clicking on close button
-    closeButton.onclick = function() {
-        modal.style.display = 'none';
-    }
-    // Function to handle mouse down event on modal header for dragging
-    modalHeader.addEventListener('mousedown', function(e) {
-        isDragging = true;
-        // Calculate offset relative to the top-left corner of the modal
-        offset.x = e.clientX - modal.offsetLeft;
-        offset.y = e.clientY - modal.offsetTop;
-    });
-    // Function to handle mouse move event when dragging
-    document.addEventListener('mousemove', function(e) {
-        if (isDragging) {
-            // Update modal position based on mouse movement
-            modal.style.left = (e.clientX - offset.x) + 'px';
-            modal.style.top = (e.clientY - offset.y) + 'px';
-        }
-    });
-    // Function to handle mouse up event to stop dragging
-    document.addEventListener('mouseup', function() {
-        isDragging = false;
-    });
-
-    // *************************
-
-
-    var isDragging = false;
-    var offset = {x: 0, y: 0};
-    // Show modal when clicking on System Preferences icon
-    document.getElementById('system-preferences-icon').onclick = function() {
-        modal.style.display = 'block';
-    }
-    // Hide modal only when clicking on close button
-    closeButton.onclick = function() {
-        modal.style.display = 'none';
-    }
-    // Function to handle mouse down event on modal header for dragging
-    modalHeader.addEventListener('mousedown', function(e) {
-        isDragging = true;
-        // Calculate offset relative to the top-left corner of the modal
-        offset.x = e.clientX - modal.offsetLeft;
-        offset.y = e.clientY - modal.offsetTop;
-    });
-    // Function to handle mouse move event when dragging
-    document.addEventListener('mousemove', function(e) {
-        if (isDragging) {
-            // Update modal position based on mouse movement
-            modal.style.left = (e.clientX - offset.x) + 'px';
-            modal.style.top = (e.clientY - offset.y) + 'px';
-        }
-    });
-    // Function to handle mouse up event to stop dragging
-    document.addEventListener('mouseup', function() {
-        isDragging = false;
-    });
-
-
+    
+    
     let selectedBackground = "";
 
     backgrounds.forEach(background => {
