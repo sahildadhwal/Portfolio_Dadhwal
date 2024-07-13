@@ -1,3 +1,4 @@
+// Drag 
 document.addEventListener('DOMContentLoaded', function() {
     // ************************* Drag System Preferences Tab 
     var systemPreferencesModal = document.getElementById('system-preferences');
@@ -154,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Function to create audio items
     function createAudioItems() {
+        
         audioDetails.forEach((audio, index) => {
             const audioItem = document.createElement("div");
             audioItem.classList.add("audio-item");
@@ -164,6 +166,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <button class="play-pause-btn" data-index="${index}">Play</button>
                 </div>
             `;
+            
+            
             audioDetailsContainer.appendChild(audioItem);
 
             const audioElement = audioItem.querySelector(`#audio-${index}`);
@@ -183,21 +187,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     musicIcon.addEventListener("click", () => {
         musicPlayerModal.style.display = "block";
+        audioDetailsContainer.innerHTML = "";
         createAudioItems();
     });
-
+    /* Should the user have to press pause to stop music?
     const closeModalMusicPlayer = musicPlayerModal.querySelector(".close");
     closeModalMusicPlayer.addEventListener("click", () => {
         musicPlayerModal.style.display = "none";
         audioDetailsContainer.innerHTML = ""; // Clear audio items when closing modal
     });
-
-    window.addEventListener("click", (event) => {
-        if (event.target === musicPlayerModal) {
-            musicPlayerModal.style.display = "none";
-            audioDetailsContainer.innerHTML = ""; // Clear audio items when closing modal
-        }
-    });
+    */
 
     // Mail Icon
     const mailIcon = document.getElementById("mail-icon");
