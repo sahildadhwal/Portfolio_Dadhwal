@@ -97,11 +97,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show modal when clicking on Resume icon
     document.getElementById('resume-icon').onclick = function() {
         resumeViewerModal.style.display = 'block';
+        // SET SPAWN HERE        
+
     }
 
     // Hide modal only when clicking on close button
     resumeViewerCloseButton.onclick = function() {
         resumeViewerModal.style.display = 'none';
+        
+
     }
 
     // Function to handle mouse down event on modal header for dragging
@@ -211,8 +215,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     systemPreferencesIcon.addEventListener("click", () => {
         systemPreferencesModal.style.display = "block";
-    });
 
+        
+        
+
+    });
+    
     closeModalButton.addEventListener("click", () => {
         systemPreferencesModal.style.display = "none";
     });
@@ -246,14 +254,13 @@ document.addEventListener("DOMContentLoaded", () => {
         { song: "Not Like Us", artist: "Kendrick Lamar", src: "audio/Not Like Us by Kendrick Lamar.mp3" }
     ];
 
-    let currentAudioIndex = null;
     let currentAudioElement = null;
     let currentSelectedElement = null;
 
     // Function to create audio items
     function createAudioItems() {
         
-        audioDetails.forEach((audio, index) => {
+        audioDetails.forEach((audio) => {
             const audioItem = document.createElement("div");
             audioItem.classList.add("audio-item");
             audioItem.innerHTML = `
@@ -271,7 +278,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     currentSelectedElement.classList.remove("selected");
                 }
 
-                currentAudioIndex = index;
                 currentAudioElement = new Audio(audio.src);
                 currentSelectedElement = audioItem;
                 currentSelectedElement.classList.add("selected");
