@@ -226,21 +226,30 @@ document.addEventListener("DOMContentLoaded", () => {
     systemPreferencesIcon.addEventListener("click", () => {
         systemPreferencesModal.style.display = "block";
 
-        
-        
-
     });
     
     closeModalButton.addEventListener("click", () => {
         systemPreferencesModal.style.display = "none";
     });
 
+
+
+
+    // Double click does the same as apply. 
+    // Add double-click event listener to apply the background
+    backgroundPreviews.addEventListener("dblclick", () => {
+        desktopBackground.style.backgroundImage = `url(${selectedBackground})`;
+        
+    });
+
+    // Apply does the same as Save, it just doesnt close the tab
     applyButton.addEventListener("click", () => {
         if (selectedBackground) {
             desktopBackground.style.backgroundImage = `url(${selectedBackground})`;
         }
     });
 
+    // Save will apply and close the tab 
     saveButton.addEventListener("click", () => {
         if (selectedBackground) {
             desktopBackground.style.backgroundImage = `url(${selectedBackground})`;
@@ -426,6 +435,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             gallery.appendChild(photoItem);
         });
+
     }
 
     // Preload images before displaying the gallery
