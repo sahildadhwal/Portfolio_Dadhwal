@@ -342,6 +342,7 @@ body {
 
 #resume-viewer .modal-content {
     height: 100%;
+    
 }
 
 #resume-viewer .modal-header {
@@ -380,6 +381,7 @@ body {
 
 #resume-viewer .modal-body {
     padding: 20px;
+    
 }
 
 /* Responsive styling for the PDF viewer */

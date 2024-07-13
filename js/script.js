@@ -10,13 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show modal when clicking on System Preferences icon
     document.getElementById('system-preferences-icon').onclick = function() {
         systemPreferencesModal.style.display = 'block';
+        systemPreferencesModal.style.top = '500px';
+        systemPreferencesModal.style.left = '1000px';
     }
 
     // Hide modal only when clicking on close button
     systemPreferencesCloseButton.onclick = function() {
         systemPreferencesModal.style.display = 'none';
-        systemPreferencesModal.style.top = '500px';
-        systemPreferencesModal.style.left = '900px';
+        
 
     }
 
@@ -136,12 +137,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show modal when clicking on Photos icon
     document.getElementById('photos-icon').onclick = function() {
         photosGalleryModal.style.display = 'block';
+        photosGalleryModal.style.top = '400px';
+        photosGalleryModal.style.left = '400px';
     }
 
     // Hide modal only when clicking on close button
     photosGalleryCloseButton.onclick = function() {
         photosGalleryModal.style.display = 'none';
     }
+
+
+
 
     // Function to handle mouse down event on modal header for dragging
     photosGalleryModalHeader.addEventListener('mousedown', function(e) {
@@ -184,7 +190,6 @@ document.addEventListener("DOMContentLoaded", () => {
         { src: "images/wallpaper/background3.jpg", alt: "Background 3" }
     ];
 
-    
     
     let selectedBackground = "";
 
