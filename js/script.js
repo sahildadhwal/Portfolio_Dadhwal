@@ -370,6 +370,11 @@ document.addEventListener('DOMContentLoaded', function() {
 //
 //
 // 
+
+const photosIcon = document.getElementById("photos-icon");
+const photosGalleryModal = document.getElementById("photos-gallery");
+
+
 document.addEventListener("DOMContentLoaded", () => {
     // Array of photo details
     const photos = [
