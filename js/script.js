@@ -203,6 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentAudioIndex = null;
     let currentAudioElement = null;
+    let currentSelectedElement = null;
 
     // Function to create audio items
     function createAudioItems() {
@@ -221,8 +222,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (currentAudioElement) {
                     currentAudioElement.pause();
                 }
+                if (currentSelectedElement) {
+                    currentSelectedElement.classList.remove("selected");
+                }
+
                 currentAudioIndex = index;
                 currentAudioElement = new Audio(audio.src);
+                currentSelectedElement = audioItem;
+                currentSelectedElement.classList.add("selected");
+
                 playPauseButton.textContent = "Pause";
                 currentAudioElement.play();
             });
