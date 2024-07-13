@@ -144,7 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
         { src: "images/wallpaper/background3.jpg", alt: "Background 3" }
     ];
 
-
     
     
     let selectedBackground = "";
@@ -308,3 +307,68 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+
+
+
+
+
+//
+//
+//
+// 
+document.addEventListener("DOMContentLoaded", () => {
+    // Array of photo details
+    const photos = [
+        { src: "images/photos/photo1.png", alt: "Photo 1" },
+        { src: "images/photos/photo2.png", alt: "Photo 2" },
+        { src: "images/photos/photo3.png", alt: "Photo 3" }
+        // Add more photos as needed
+    ];
+
+    // Function to create photo items in the gallery
+    function createPhotoGallery() {
+        const gallery = document.getElementById("gallery");
+        gallery.innerHTML = ""; // Clear previous content if any
+
+        photos.forEach(photo => {
+            const photoItem = document.createElement("div");
+            photoItem.classList.add("photo-item");
+
+            // Create image preview
+            const imgPreview = document.createElement("div");
+            //  HERERERERE
+            imgPreview.classList.add("photo-preview");
+            //imgPreview.classList.add("gallery");
+            
+            
+            imgPreview.style.backgroundImage = `url(${photo.src})`;
+
+            photoItem.appendChild(imgPreview);
+
+            // Add event listener to log clicked photo
+            photoItem.addEventListener("click", () => {
+                console.log(`Clicked on ${photo.alt}`);
+                // Optionally, perform actions like displaying full-size image
+            });
+
+            gallery.appendChild(photoItem);
+        });
+    }
+
+    // Show photos gallery modal when clicking on Photos icon
+    const photosIcon = document.getElementById("photos-icon");
+    const photosGalleryModal = document.getElementById("photos-gallery");
+
+    photosIcon.addEventListener("click", () => {
+        photosGalleryModal.style.display = "block";
+        createPhotoGallery();
+    });
+
+    // Hide photos gallery modal when clicking on close button
+    const closePhotosButton = photosGalleryModal.querySelector(".close");
+    closePhotosButton.addEventListener("click", () => {
+        photosGalleryModal.style.display = "none";
+        // Optionally clear gallery content here
+    });
+});

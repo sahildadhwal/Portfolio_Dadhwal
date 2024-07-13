@@ -390,3 +390,34 @@ body {
         width: 95%;
     }
 }
+
+
+/* Example CSS for Photo Gallery */
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adjust the gap between photos */
+}
+
+
+.photo-item {
+    /* Style for each photo item in the gallery */
+    margin: 10px;
+    display: inline-block;
+}
+
+.photo-preview {
+    /* Style for the image preview */
+    width: 150px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.photo-preview:hover {
+    border-color: #007bff; /* Example hover effect */
+}
+
+
