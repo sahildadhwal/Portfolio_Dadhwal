@@ -191,6 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const musicPlayerModal = document.getElementById("music-player");
     const audioDetailsContainer = document.getElementById("audio-details");
     const playPauseButton = document.getElementById("play-pause-btn");
+    
 
     // Array of audio details
     const audioDetails = [
@@ -231,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentSelectedElement = audioItem;
                 currentSelectedElement.classList.add("selected");
 
-                playPauseButton.textContent = "Pause";
+                playPauseButton.innerHTML = '<i class="fa fa-pause-circle"></i>';
                 currentAudioElement.play();
             });
         });
@@ -241,12 +242,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (currentAudioElement) {
             if (currentAudioElement.paused) {
                 currentAudioElement.play();
-                playPauseButton.textContent = "Pause";
+                playPauseButton.innerHTML = '<i class="fa fa-pause-circle"></i>';
             } else {
                 currentAudioElement.pause();
-                playPauseButton.textContent = "Play";
+                playPauseButton.innerHTML = '<i class="fa fa-play-circle"></i>';
             }
         }
+
     });
 
     musicIcon.addEventListener("click", () => {
@@ -254,6 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
         audioDetailsContainer.innerHTML = "";
         createAudioItems();
     });
+    
     
     /* Delete chuck if you want music to only stop if user presses pause. */
     // Stops music when user exits apple music app

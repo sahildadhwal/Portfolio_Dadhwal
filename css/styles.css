@@ -230,6 +230,30 @@ body {
     outline: none;
 }
 
+#music-controls {
+    display: flex;
+    align-items: center;
+}
+
+#play-pause-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #007bff;
+}
+
+#play-pause-btn:focus {
+    outline: none;
+}
+
+.fa-play:before, .fa-pause:before {
+    font-family: "Font Awesome 5 Free";
+}
+
+#play-pause-icon {
+    transition: transform 0.2s ease-in-out;
+}
 
 
 /*  */
