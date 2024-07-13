@@ -54,11 +54,12 @@ body {
 /* Change size of resume icon to match Projects folder size */
 .icon-container .icon#resume-icon img {
     padding: 10px;
-    
-    
-    /* Add any additional styling here */
 }
+/* Change size of linkedin icon to match Projects folder size */
+.icon-container .icon#linkedin-icon img {
+    padding: 10px;
 
+}
 
 
 .icon img {
@@ -267,8 +268,6 @@ body {
     transform: scale(1.2); /* Increase size on active */
     z-index: 1; /* Ensure active preview is on top */
 }
-
-
 
 
 

@@ -271,4 +271,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#resume-viewer .close').onclick = function() {
         document.getElementById('resume-viewer').style.display = 'none';
     }
+    
+    
+    // Open my linkedin profile when icon is clicked
+    document.getElementById('linkedin-icon').onclick = function() {
+        window.open('https://www.linkedin.com/in/sahildadhwal/', '_blank');
+    }
 });
+
