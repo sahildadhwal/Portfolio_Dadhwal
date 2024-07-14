@@ -155,8 +155,6 @@ document.addEventListener('DOMContentLoaded', function() {
         resumeViewerModal.style.display = 'block';
         // SET RESUME SPAWN HERE       
         if (1 === 1) {
-       
-
             const modalWidth = resumeViewerModal.offsetWidth;
             const modalHeight = resumeViewerModal.offsetHeight;
         
