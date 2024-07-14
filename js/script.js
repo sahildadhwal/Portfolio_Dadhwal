@@ -11,8 +11,35 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('system-preferences-icon').onclick = function() {
         systemPreferencesModal.style.display = 'block';
         // SETTINGS SPAWN
-        systemPreferencesModal.style.top = '500px';
-        systemPreferencesModal.style.left = '1200px';
+        if(1===1){
+            // Define modal dimensions
+            const modalWidth = systemPreferencesModal.offsetWidth;
+            const modalHeight = systemPreferencesModal.offsetHeight;
+
+            // Get viewport dimensions
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            // Calculate maximum allowable positions
+            const maxLeft = viewportWidth - modalWidth;
+            const maxTop = viewportHeight - modalHeight;
+
+            // Set initial position
+            let desiredLeft = 1200; // Your desired left position
+            let desiredTop = 500;   // Your desired top position
+
+            // Adjust positions if they exceed viewport bounds
+            if (desiredLeft > maxLeft) {
+                desiredLeft = maxLeft;
+            }
+            if (desiredTop > maxTop) {
+                desiredTop = maxTop;
+            }
+
+            // Set modal position
+            systemPreferencesModal.style.left = `${desiredLeft}px`;
+            systemPreferencesModal.style.top = `${desiredTop}px`;
+        }
     }
 
     // Hide modal only when clicking on close button
@@ -56,9 +83,36 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('music-icon').onclick = function() {
         musicPlayerModal.style.display = 'block';
         // MUSIC SPAWN
-        musicPlayerModal.style.top = '500px';
-        musicPlayerModal.style.left = '1700px';
-
+        if (1 === 1) {
+            // Define modal dimensions
+            const modalWidth = musicPlayerModal.offsetWidth;
+            const modalHeight = musicPlayerModal.offsetHeight;
+        
+            // Get viewport dimensions
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+        
+            // Calculate maximum allowable positions
+            const maxLeft = viewportWidth - modalWidth;
+            const maxTop = viewportHeight - modalHeight;
+        
+            // Set initial position
+            let desiredLeft = 1700; // Your desired left position
+            let desiredTop = 500;   // Your desired top position
+        
+            // Adjust positions if they exceed viewport bounds
+            if (desiredLeft > maxLeft) {
+                desiredLeft = maxLeft;
+            }
+            if (desiredTop > maxTop) {
+                desiredTop = maxTop;
+            }
+        
+            // Set modal position
+            musicPlayerModal.style.left = `${desiredLeft}px`;
+            musicPlayerModal.style.top = `${desiredTop}px`;
+        }
+        
     }
 
     // Hide modal only when clicking on close button
@@ -144,9 +198,36 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('photos-icon').onclick = function() {
         photosGalleryModal.style.display = 'block';
         // PHOTOS SPAWN
-        photosGalleryModal.style.top = '400px';
-        photosGalleryModal.style.left = '500px';
-    }
+        if (1 === 1) {
+            // Define modal dimensions
+            const modalWidth = photosGalleryModal.offsetWidth;
+            const modalHeight = photosGalleryModal.offsetHeight;
+        
+            // Get viewport dimensions
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+        
+            // Calculate maximum allowable positions
+            const maxLeft = viewportWidth - modalWidth;
+            const maxTop = viewportHeight - modalHeight;
+        
+            // Set initial position
+            let desiredLeft = 500; // Your desired left position
+            let desiredTop = 400;   // Your desired top position
+        
+            // Adjust positions if they exceed viewport bounds
+            if (desiredLeft > maxLeft) {
+                desiredLeft = maxLeft;
+            }
+            if (desiredTop > maxTop) {
+                desiredTop = maxTop;
+            }
+        
+            // Set modal position
+            photosGalleryModal.style.left = `${desiredLeft}px`;
+            photosGalleryModal.style.top = `${desiredTop}px`;
+        }
+            }
 
     // Hide modal only when clicking on close button
     photosGalleryCloseButton.onclick = function() {
