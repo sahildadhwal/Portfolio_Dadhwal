@@ -480,3 +480,16 @@ window.onclick = function(event) {
         }
     }
 }
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    const setBodyHeight = () => {
+        document.body.style.height = `${window.innerHeight}px`;
+    };
+
+    // Set initial body height
+    setBodyHeight();
+
+    // Update body height when window is resized
+    window.addEventListener('resize', setBodyHeight);
+});
