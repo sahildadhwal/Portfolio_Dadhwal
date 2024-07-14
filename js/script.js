@@ -153,7 +153,42 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show modal when clicking on Resume icon
     document.getElementById('resume-icon').onclick = function() {
         resumeViewerModal.style.display = 'block';
-        // SET RESUME SPAWN HERE        
+        // SET RESUME SPAWN HERE       
+        if (1 === 1) {
+       
+
+            const modalWidth = resumeViewerModal.offsetWidth;
+            const modalHeight = resumeViewerModal.offsetHeight;
+        
+            // Get viewport dimensions
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+        
+            // Calculate maximum allowable positions
+            const maxLeft = viewportWidth - modalWidth;
+            const maxTop = viewportHeight - modalHeight;
+        
+            // Set initial position
+            let desiredLeft = 0; // Your desired left position
+            let desiredTop = 0;   // Your desired top position
+        
+            // Adjust positions if they exceed viewport bounds
+            if (desiredLeft > maxLeft) {
+                desiredLeft = maxLeft;
+            }
+            if (desiredTop > maxTop) {
+                desiredTop = maxTop;
+            }
+        
+            // Set modal position
+            musicPlayerModal.style.left = `${desiredLeft}px`;
+            musicPlayerModal.style.top = `${desiredTop}px`;
+
+
+
+
+        }
+         
 
     }
 
