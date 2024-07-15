@@ -302,10 +302,14 @@ body {
 }
 
 .background-preview img {
-    width: 100%; /* Adjust width of the preview images */
-    height: auto; /* Maintain aspect ratio */
+    width: 150px;
+    height: 100px; /* Maintain aspect ratio */
     border: 1px solid #ccc; /* Optional: add a border for visual separation */
     cursor: pointer;
+
+    max-width: 150px;
+    max-height: 100px;
+
 }
 
 /* CSS for expanding the tab */
@@ -407,7 +411,7 @@ body {
 /* Example CSS for Photo Gallery */
 .photo-item {
     /* Style for each photo item in the gallery */
-    margin: 10px;
+    margin: 1px;
     display: inline-block;
 }
 
@@ -419,6 +423,11 @@ body {
     background-position: center;
     border: 1px solid #ccc;
     cursor: pointer;
+
+    max-width: 150px;
+    max-height: 100px;
+
+
 }
 
 .photo-preview:hover {
