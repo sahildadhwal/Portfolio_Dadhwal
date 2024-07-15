@@ -364,10 +364,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
 
-    
-    
-
-    
+    max-height: 80vh;
 }
 
 #resume-viewer .modal-content {
