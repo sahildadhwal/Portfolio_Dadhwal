@@ -129,7 +129,9 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
-    max-width: 80%;
+    max-width: 30vw;
+    max-height: 50vh;
+
     background-color: #fefefe;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -145,7 +147,7 @@ body {
 
 .system-modal {
     width: 500px;  /* Desired width for the system modal */
-    height: 500px; /* Desired height for the system modal */
+    height: 430px; /* Desired height for the system modal */
 }
 
 .gallery-modal {
@@ -155,10 +157,9 @@ body {
 
 
 .project-modal {
-    width: 500px;  /* Desired width for the system modal */
-    height: 500px; /* Desired height for the system modal */
+    width: 500px;  /* Desired width for the project modal */
+    height: 500px; /* Desired height for the project modal */
 }
-
 
 
 
@@ -261,13 +262,11 @@ body {
     justify-content: center;
 
 }
-
 #play-pause-btn {
     background: none;
     border: none;
     cursor: pointer;
     font-size: 24px;
-
 }
 
 #play-pause-btn:focus {
@@ -310,7 +309,7 @@ body {
 }
 
 .background-preview img {
-    width: 200px; /* Adjust width of the preview images */
+    width: 100%; /* Adjust width of the preview images */
     height: auto; /* Maintain aspect ratio */
     border: 1px solid #ccc; /* Optional: add a border for visual separation */
     cursor: pointer;
@@ -335,11 +334,6 @@ body {
     transition: transform 0.1s ease; /* Smooth transition for transform */
 }
 
-.background-preview img {
-    width: 100%;
-    height: auto;
-    border: 1px solid #ccc; /* Optional: add a border for visual separation */
-}
 
 .background-preview.active {
     transform: scale(1.2); /* Increase size on active */
