@@ -137,8 +137,6 @@ body {
 
     resize: both;
     overflow: auto;
-
-    
   
 }
 
@@ -157,8 +155,6 @@ body {
     width: 500px;  /* Desired width for the project modal */
     height: 500px; /* Desired height for the project modal */
 }
-
-
 
 
 .modal-header {
@@ -279,8 +275,6 @@ body {
 }
 
 
-
-
 /* Apply and Save buttons styling */
 #apply-background-btn, #save-background-button {
     background-color: #FF605C;
@@ -303,6 +297,8 @@ body {
 .background-preview {
     display: inline-block;
     margin-right: 200px;
+    flex-wrap:wrap;
+    gap: 10px; /* Adjust the gap between photos */
 }
 
 .background-preview img {
@@ -409,15 +405,6 @@ body {
 
 
 /* Example CSS for Photo Gallery */
-#gallery {
-    display: flex;
-    flex-wrap:wrap;
-    gap: 10px; /* Adjust the gap between photos */
-    
-    
-}
-
-
 .photo-item {
     /* Style for each photo item in the gallery */
     margin: 10px;
