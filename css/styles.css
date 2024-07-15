@@ -48,8 +48,6 @@ body {
     position: relative;
     display: inline-block;
     transition: transform 0.3s ease;
-    
-
 }
 
 
@@ -62,7 +60,6 @@ body {
     padding: 10px;
 
 }
-
 
 .icon img {
     width: 100px;
@@ -314,8 +311,6 @@ body {
     border: 1px solid #ccc; /* Optional: add a border for visual separation */
     cursor: pointer;
 }
-
-
 
 /* CSS for expanding the tab */
 .expand-tab {
