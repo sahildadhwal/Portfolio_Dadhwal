@@ -363,6 +363,12 @@ body {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
+
+    height: 95%;
+
+    
+
+    
 }
 
 #resume-viewer .modal-content {
