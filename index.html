@@ -120,21 +120,45 @@
 
     <!-- PROJECTS FOLDER -->
     <div id="project-modal" class="modal project-modal">
+        <!-- <div class="modal-content">
+            <div class="modal-header">
+                <div class="close" onclick="closeModal('project-modal')"></div> 
+                <h2>Projects</h2> 
+            </div>
+            <div class="modal-body">
+                <p>Please look at the resume PDF file. This section is in progress. :)</p>
+            </div>
+        </div>
+    </div> -->
+    
         <div class="modal-content">
             <div class="modal-header">
                 <div class="close" onclick="closeModal('project-modal')"></div> <!-- Red circle close button -->
                 <h2>Projects</h2> <!-- Title in grey bar -->
             </div>
-            <div class="modal-body">
-                <p>Please look at the resume PDF file. This section is in progress. :)</p>
+            <div id="projects-container">
+                
+                <div class="project-icon" id="task-manager-icon" href="https://github.com/sahildadhwal/iOSTaskManagerApp/blob/main/demo/TaskManagerAppDemo.gif">
+                    <img src="images/icons/task-manager-app.png" alt="Task Manager App">
+                    <span>Reminders</span>
+                    
+                </div>
+
+
+
+
+                <!-- Add more project icons as needed -->
+                <!-- <div class="project-icon" data-url="https://github.com/username/project2">
+                    <img src="path/to/project2-icon.png" alt="Project 2">
+                    <span>Project 2</span>
+                </div> -->
             </div>
         </div>
     </div>
     
 
 
-
-
+    <!-- JS file down here -->
     <script src="js/script.js"></script>
 </body>
 </html>

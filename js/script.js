@@ -486,6 +486,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('linkedin-icon').onclick = function() {
         window.open('https://www.linkedin.com/in/sahildadhwal/', '_blank');
     }
+
+    
 });
 
 
