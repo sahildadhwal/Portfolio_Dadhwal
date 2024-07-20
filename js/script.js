@@ -295,6 +295,84 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+  // ************************* Drag Photo Gallery
+  var projectModal = document.getElementById('project-modal');
+  var projectCloseButton = projectModal.querySelector('.close');
+  var projectModalHeader = projectModal.querySelector('.modal-header');
+  
+  
+
+  var isProjDragging = false;
+  var projOffset= {x: 0, y: 0};
+
+  // Show modal when clicking on Proj icon
+  document.getElementById('projects-icon').onclick = function() {
+      projectModal.style.display = 'block';
+      // Projects SPAWN
+      if (1 === 1) {
+          // Define modal dimensions
+          const modalWidth = projectModal.offsetWidth;
+          const modalHeight = projectModal.offsetHeight;
+      
+          // Get viewport dimensions
+          const viewportWidth = window.innerWidth;
+          const viewportHeight = window.innerHeight;
+      
+          // Calculate maximum allowable positions
+          const maxLeft = viewportWidth - modalWidth;
+          const maxTop = viewportHeight - modalHeight;
+      
+          // Set initial position
+          let desiredLeft = 500; // Your desired left position
+          let desiredTop = 400;   // Your desired top position
+      
+          // Adjust positions if they exceed viewport bounds
+          if (desiredLeft > maxLeft) {
+              desiredLeft = maxLeft;
+          }
+          if (desiredTop > maxTop) {
+              desiredTop = maxTop;
+          }
+      
+          // Set modal position
+          projectModal.style.left = `${desiredLeft}px`;
+          projectModal.style.top = `${desiredTop}px`;
+      }
+          }
+
+  // Hide modal only when clicking on close button
+  projectCloseButton.onclick = function() {
+      projectModal.style.display = 'none';
+  }
+
+
+
+
+  // Function to handle mouse down event on modal header for dragging
+  projectModalHeader.addEventListener('mousedown', function(e) {
+      isProjDragging = true;
+      // Calculate offset relative to the top-left corner of the modal
+      projOffset.x = e.clientX - projectModal.offsetLeft;
+      projOffset.y = e.clientY - projectModal.offsetTop;
+  });
+
+  // Function to handle mouse move event when dragging
+  document.addEventListener('mousemove', function(e) {
+      if (isProjDragging) {
+          // Update modal position based on mouse movement
+          projectModal.style.left = (e.clientX - projOffset.x) + 'px';
+          projectModal.style.top = (e.clientY - projOffset.y) + 'px';
+      }
+  });
+
+  // Function to handle mouse up event to stop dragging
+  document.addEventListener('mouseup', function() {
+      isProjDragging = false;
+  });
+
+
+/// END DRAG BLOCK
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const systemPreferencesIcon = document.getElementById("system-preferences-icon");
@@ -491,8 +569,9 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('task-manager-icon').onclick = function() {
         window.open('https://github.com/sahildadhwal/iOSTaskManagerApp/tree/main', '_blank');
     }
-});
 
+
+});
 
 
 
@@ -590,15 +669,6 @@ function closeModal(modalId) {
     modal.style.display = 'none';
 }
 
-// Optional: Add event listeners to close modals when clicking outside of them
-window.onclick = function(event) {
-    var modals = document.getElementsByClassName('modal');
-    for (var i = 0; i < modals.length; i++) {
-        if (event.target == modals[i]) {
-            modals[i].style.display = 'none';
-        }
-    }
-}
 
 
 window.addEventListener('DOMContentLoaded', () => {
