@@ -487,7 +487,10 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open('https://www.linkedin.com/in/sahildadhwal/', '_blank');
     }
 
-    
+    // Open my REMINDERS TASK MANAGER APP when icon is clicked
+    document.getElementById('task-manager-icon').onclick = function() {
+        window.open('https://github.com/sahildadhwal/iOSTaskManagerApp/tree/main', '_blank');
+    }
 });
 
 
