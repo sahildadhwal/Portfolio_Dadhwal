@@ -567,7 +567,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Open my REMINDERS TASK MANAGER APP when icon is clicked
     document.getElementById('task-manager-icon').onclick = function() {
-        window.open('https://github.com/sahildadhwal/iOS-Projects/tree/main', '_blank');
+        window.open('https://github.com/sahildadhwal/iOS-Projects/tree/main/TaskManager', '_blank');
     }
 
 
