@@ -1,23 +1,51 @@
 const gameBoard = document.getElementById('game-board');
 const applePreview = document.getElementById('apple-preview');
 const applePreviewImage = document.getElementById('apple-preview-image');
-const scoreDisplay = document.getElementById('score-display'); // Display the score
-const maxScoreDisplay = document.getElementById('max-score-display'); // Display the max score
-
+const scoreDisplay = document.getElementById('score-display');
+const maxScoreDisplay = document.getElementById('max-score-display');
 
 const eatSound = new Audio('audio/short/rizz.mp3');
-const deathSound = new Audio('audio/short/spongefail.mp3'); 
+const deathSound = new Audio('audio/short/spongefail.mp3');
 
-
-const boardSize = 20; // Grid size (20x20)
-let snake = [{ x: 10, y: 10 }]; // Starting position of the snake
+const boardSize = 20;
+let snake = [{ x: 10, y: 10 }];
 let direction = 'RIGHT';
 let apple = {};
 let score = 0;
-let maxScore = localStorage.getItem('maxScore') ? parseInt(localStorage.getItem('maxScore')) : 0; // Get max score from localStorage
+let maxScore = localStorage.getItem('maxScore') ? parseInt(localStorage.getItem('maxScore')) : 0;
 
-// List of images (replace with actual paths to images)
-const images = ['images/photos/photo1.jpg', 'images/photos/photo2.jpg', 'images/photos/photo3.jpg', 'images/photos/photo4.jpg']; // Adjust this list based on your images
+// List of images
+const images = [
+  'images/photos/photo1.jpg', 'images/photos/photo2.jpg', 'images/photos/photo3.jpg', 'images/photos/photo4.jpg', 
+  'images/photos/photo5.jpg', 'images/photos/photo6.jpg', 'images/photos/photo7.jpg', 'images/photos/photo8.jpg', 
+  'images/photos/photo9.jpg', 'images/photos/photo10.jpg', 'images/photos/photo11.jpg', 'images/photos/photo12.jpg', 
+  'images/photos/photo13.jpg', 'images/photos/photo14.jpg', 'images/photos/photo15.jpg', 'images/photos/photo16.jpg', 
+  'images/photos/photo17.jpg', 'images/photos/photo18.jpg', 'images/photos/photo19.jpg', 'images/photos/photo20.jpg', 
+  'images/photos/photo21.jpg', 'images/photos/photo22.jpg', 'images/photos/photo23.jpg', 'images/photos/photo24.jpg', 
+  'images/photos/photo25.jpg', 'images/photos/photo26.jpg', 'images/photos/photo27.jpg'
+];
+
+// Add a queue to track available images
+let imageQueue = [];
+
+// Fisher-Yates shuffle algorithm
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+// Get the next image from the queue, reshuffle if empty
+function getNextImage() {
+  if (imageQueue.length === 0) {
+    // If queue is empty, create a new shuffled queue with all images
+    imageQueue = [...images];
+    shuffleArray(imageQueue);
+  }
+  return imageQueue.pop();
+}
 
 // Generate a random position for the apple
 function getRandomPosition() {
@@ -43,10 +71,10 @@ function placeApple() {
   appleElement.style.gridColumnStart = apple.x + 1;
   appleElement.style.gridRowStart = apple.y + 1;
 
-  // Pick a random image for the apple
-  const randomImage = images[Math.floor(Math.random() * images.length)];
-  appleElement.style.backgroundImage = `url(${randomImage})`;
-  applePreviewImage.src = randomImage; // Update preview image
+  // Get next image from our queue instead of random selection
+  const nextImage = getNextImage();
+  appleElement.style.backgroundImage = `url(${nextImage})`;
+  applePreviewImage.src = nextImage; // Update preview image
   gameBoard.appendChild(appleElement);
 }
 
@@ -72,14 +100,14 @@ function checkCollision() {
   // Check if the snake hits its own body
   for (let i = 1; i < snake.length; i++) {
     if (head.x === snake[i].x && head.y === snake[i].y) {
-        deathSound.play()
-        return true;
+      deathSound.play();
+      return true;
     }
   }
 
   return false;
 }
-  
+
 // Move the snake
 function moveSnake() {
   const head = { ...snake[0] };
@@ -99,39 +127,33 @@ function moveSnake() {
       break;
   }
 
-  // Wall wrapping logic (snake will appear on the opposite side when it hits a wall)
-  if (head.x < 0) head.x = boardSize - 1; // Wrap around left
-  if (head.x >= boardSize) head.x = 0; // Wrap around right
-  if (head.y < 0) head.y = boardSize - 1; // Wrap around top
-  if (head.y >= boardSize) head.y = 0; // Wrap around bottom
+  // Wall wrapping logic
+  if (head.x < 0) head.x = boardSize - 1;
+  if (head.x >= boardSize) head.x = 0;
+  if (head.y < 0) head.y = boardSize - 1;
+  if (head.y >= boardSize) head.y = 0;
 
   // Check if the snake eats the apple
   if (head.x === apple.x && head.y === apple.y) {
-    score += 1; // Increase score
-    scoreDisplay.textContent = `Current: ${score}`; // Update score display
-    placeApple(); // Place a new apple
-    
-    // Play the sound once when the apple is eaten
+    score += 1;
+    scoreDisplay.textContent = `Current: ${score}`;
+    placeApple();
     eatSound.play();
 
-
-    // Update max score if the current score is higher
     if (score > maxScore) {
-        maxScore = score;
-        localStorage.setItem('maxScore', maxScore); // Save max score to localStorage
-        maxScoreDisplay.textContent = `High Score: ${maxScore}`; // Update max score display
+      maxScore = score;
+      localStorage.setItem('maxScore', maxScore);
+      maxScoreDisplay.textContent = `High Score: ${maxScore}`;
     }
-} else {
-    snake.pop(); // Remove the last part of the snake (tail)
+  } else {
+    snake.pop();
   }
 
-  // Add the new head to the snake
   snake.unshift(head);
   drawSnake();
 
-  // Check for collisions
   if (checkCollision()) {
-    resetGame(); // Reset the game if collision occurs
+    resetGame();
   }
 }
 
@@ -153,26 +175,27 @@ document.addEventListener('keydown', event => {
   }
 });
 
+// Reset the game to its initial state
+function resetGame() {
+  snake = [{ x: 10, y: 10 }];
+  direction = 'RIGHT';
+  score = 0;
+  scoreDisplay.textContent = `Current: ${score}`;
+  gameBoard.innerHTML = '';
+  imageQueue = []; // Reset image queue to force a new shuffle
+  placeApple();
+}
+
 // Game loop to update the game state every 100ms
 function gameLoop() {
   moveSnake();
 }
 
-// Reset the game to its initial state
-function resetGame() {
-  snake = [{ x: 10, y: 10 }]; // Reset snake to initial position
-  direction = 'RIGHT'; // Reset direction to right
-  score = 0; // Reset score
-  scoreDisplay.textContent = `Current: ${score}`; // Update score display
-  gameBoard.innerHTML = ''; // Clear the game board
-  placeApple(); // Place a new apple
-}
-
 // Start the game
 function startGame() {
-  placeApple(); // Place the first apple
-  maxScoreDisplay.textContent = `High Score: ${maxScore}`; // Display the max score on the page
-  setInterval(gameLoop, 100); // Start the game loop
+  placeApple();
+  maxScoreDisplay.textContent = `High Score: ${maxScore}`;
+  setInterval(gameLoop, 100);
 }
 
 // Start the game when the page loads

@@ -8,7 +8,7 @@
     <title>Sahil Dadhwal's Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="icon" href="/images/icons/sd.png">
 </head>
 <body>
     <div class="desktop-background" id="desktop-background"></div>
@@ -17,7 +17,6 @@
         <div class="icon" id="projects-icon" onclick="showModal('project-modal')">
             <img src="images/icons/projects-icon.png" alt="Projects">
             <span>Projects</span>
-
         </div>
         
         <div class="icon" id="resume-icon">
@@ -46,7 +45,14 @@
             <span>LinkedIn</span>
         </div>
         
-
+        <!--  -->
+        <div class="icon" id="snake-icon" onclick="showModal('snake-modal')">
+            <img src="/images/icons/snake-icon.jpg" alt="Snake Game">
+            <span>Photos 2.0</span>
+        </div>
+                
+        
+<!--  -->
     </div>
     
     <div class="bottom-row">
@@ -120,17 +126,6 @@
 
     <!-- PROJECTS FOLDER -->
     <div id="project-modal" class="modal project-modal">
-        <!-- <div class="modal-content">
-            <div class="modal-header">
-                <div class="close" onclick="closeModal('project-modal')"></div> 
-                <h2>Projects</h2> 
-            </div>
-            <div class="modal-body">
-                <p>Please look at the resume PDF file. This section is in progress. :)</p>
-            </div>
-        </div>
-    </div> -->
-    
         <div class="modal-content">
             <div class="modal-header">
                 <div class="close"></div>
@@ -153,10 +148,38 @@
             </div>
         </div>
     </div>
+
+<!--  -->
+    <!-- Snake Game Modal -->
+    <div id="snake-modal" class="modal snake-game-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="close" onclick="closeModal('snake-modal')"></div>
+                <h2>Snake Game (Sahil Edition)</h2>
+            </div>
+            <div class="modal-body">
+                <div id="game-board"></div>
+                <div id="apple-preview">
+                    <div id="max-score-display">High Score: 0</div>
+                    <img id="apple-preview-image" src="" alt="Target">
+                    <div id="score-display">Current: 0</div>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+    
+
+
+            </div>
+        </div>
+    </div>
     
 
 
     <!-- JS file down here -->
     <script src="js/script.js"></script>
+    <script src="js/script_snake.js"></script>
+
 </body>
 </html>

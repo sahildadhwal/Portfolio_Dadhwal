@@ -1,375 +1,67 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // ************************* Drag System Preferences Tab 
-    var systemPreferencesModal = document.getElementById('system-preferences');
-    var systemPreferencesCloseButton = systemPreferencesModal.querySelector('.close');
-    var systemPreferencesModalHeader = systemPreferencesModal.querySelector('.modal-header');
+    // Modal setup function to reduce code duplication
+    function setupModal(modalId, iconId, initialPosition = { left: 0, top: 0 }) {
+        const modal = document.getElementById(modalId);
+        const closeButton = modal.querySelector('.close');
+        const modalHeader = modal.querySelector('.modal-header');
+        let isDragging = false;
+        let offset = { x: 0, y: 0 };
 
-    var isSystemPreferencesDragging = false;
-    var systemPreferencesOffset = {x: 0, y: 0};
-
-    // Show modal when clicking on System Preferences icon
-    document.getElementById('system-preferences-icon').onclick = function() {
-        systemPreferencesModal.style.display = 'block';
-        // SETTINGS SPAWN
-        if(1===1){
-            // Define modal dimensions
-            const modalWidth = systemPreferencesModal.offsetWidth;
-            const modalHeight = systemPreferencesModal.offsetHeight;
-
-            // Get viewport dimensions
+        // Show modal when clicking on icon
+        document.getElementById(iconId).onclick = function() {
+            modal.style.display = 'block';
+            
+            // Set spawn position
+            const modalWidth = modal.offsetWidth;
+            const modalHeight = modal.offsetHeight;
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
-
+            
             // Calculate maximum allowable positions
             const maxLeft = viewportWidth - modalWidth;
             const maxTop = viewportHeight - modalHeight;
-
-            // Set initial position
-            let desiredLeft = 1200; // Your desired left position
-            let desiredTop = 500;   // Your desired top position
-
+            
             // Adjust positions if they exceed viewport bounds
-            if (desiredLeft > maxLeft) {
-                desiredLeft = maxLeft;
-            }
-            if (desiredTop > maxTop) {
-                desiredTop = maxTop;
-            }
-
+            let desiredLeft = Math.min(initialPosition.left, maxLeft);
+            let desiredTop = Math.min(initialPosition.top, maxTop);
+            
             // Set modal position
-            systemPreferencesModal.style.left = `${desiredLeft}px`;
-            systemPreferencesModal.style.top = `${desiredTop}px`;
+            modal.style.left = `${desiredLeft}px`;
+            modal.style.top = `${desiredTop}px`;
         }
+
+        // Hide modal
+        closeButton.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        // Dragging functionality
+        modalHeader.addEventListener('mousedown', function(e) {
+            isDragging = true;
+            offset.x = e.clientX - modal.offsetLeft;
+            offset.y = e.clientY - modal.offsetTop;
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (isDragging) {
+                modal.style.left = (e.clientX - offset.x) + 'px';
+                modal.style.top = (e.clientY - offset.y) + 'px';
+            }
+        });
+
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+        });
     }
 
-    // Hide modal only when clicking on close button
-    systemPreferencesCloseButton.onclick = function() {
-        systemPreferencesModal.style.display = 'none';
-        
-
-    }
-
-    // Function to handle mouse down event on modal header for dragging
-    systemPreferencesModalHeader.addEventListener('mousedown', function(e) {
-        isSystemPreferencesDragging = true;
-        // Calculate offset relative to the top-left corner of the modal
-        systemPreferencesOffset.x = e.clientX - systemPreferencesModal.offsetLeft;
-        systemPreferencesOffset.y = e.clientY - systemPreferencesModal.offsetTop;
-    });
-
-    // Function to handle mouse move event when dragging
-    document.addEventListener('mousemove', function(e) {
-        if (isSystemPreferencesDragging) {
-            // Update modal position based on mouse movement
-            systemPreferencesModal.style.left = (e.clientX - systemPreferencesOffset.x) + 'px';
-            systemPreferencesModal.style.top = (e.clientY - systemPreferencesOffset.y) + 'px';
-        }
-    });
-
-    // Function to handle mouse up event to stop dragging
-    document.addEventListener('mouseup', function() {
-        isSystemPreferencesDragging = false;
-    });
-
-    // ************************* Drag Music Tab
-    var musicPlayerModal = document.getElementById('music-player');
-    var musicPlayerCloseButton = musicPlayerModal.querySelector('.close');
-    var musicPlayerModalHeader = musicPlayerModal.querySelector('.modal-header');
-
-    var isMusicPlayerDragging = false;
-    var musicPlayerOffset = {x: 0, y: 0};
-
-    // Show modal when clicking on Music icon
-    document.getElementById('music-icon').onclick = function() {
-        musicPlayerModal.style.display = 'block';
-        // MUSIC SPAWN
-        if (1 === 1) {
-            // Define modal dimensions
-            const modalWidth = musicPlayerModal.offsetWidth;
-            const modalHeight = musicPlayerModal.offsetHeight;
-        
-            // Get viewport dimensions
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
-        
-            // Calculate maximum allowable positions
-            const maxLeft = viewportWidth - modalWidth;
-            const maxTop = viewportHeight - modalHeight;
-        
-            // Set initial position
-            let desiredLeft = 1700; // Your desired left position
-            let desiredTop = 500;   // Your desired top position
-        
-            // Adjust positions if they exceed viewport bounds
-            if (desiredLeft > maxLeft) {
-                desiredLeft = maxLeft;
-            }
-            if (desiredTop > maxTop) {
-                desiredTop = maxTop;
-            }
-        
-            // Set modal position
-            musicPlayerModal.style.left = `${desiredLeft}px`;
-            musicPlayerModal.style.top = `${desiredTop}px`;
-        }
-        
-    }
-
-    // Hide modal only when clicking on close button
-    musicPlayerCloseButton.onclick = function() {
-        musicPlayerModal.style.display = 'none';
-    }
-
-    // Function to handle mouse down event on modal header for dragging
-    musicPlayerModalHeader.addEventListener('mousedown', function(e) {
-        isMusicPlayerDragging = true;
-        // Calculate offset relative to the top-left corner of the modal
-        musicPlayerOffset.x = e.clientX - musicPlayerModal.offsetLeft;
-        musicPlayerOffset.y = e.clientY - musicPlayerModal.offsetTop;
-    });
-
-    // Function to handle mouse move event when dragging
-    document.addEventListener('mousemove', function(e) {
-        if (isMusicPlayerDragging) {
-            // Update modal position based on mouse movement
-            musicPlayerModal.style.left = (e.clientX - musicPlayerOffset.x) + 'px';
-            musicPlayerModal.style.top = (e.clientY - musicPlayerOffset.y) + 'px';
-        }
-    });
-
-    // Function to handle mouse up event to stop dragging
-    document.addEventListener('mouseup', function() {
-        isMusicPlayerDragging = false;
-    });
-
-    // ************************* Drag Resume Viewer
-    var resumeViewerModal = document.getElementById('resume-viewer');
-    var resumeViewerCloseButton = resumeViewerModal.querySelector('.close');
-    var resumeViewerModalHeader = resumeViewerModal.querySelector('.modal-header');
-
-    var isResumeViewerDragging = false;
-    var resumeViewerOffset = {x: 0, y: 0};
-
-    // Show modal when clicking on Resume icon
-    document.getElementById('resume-icon').onclick = function() {
-        resumeViewerModal.style.display = 'block';
-        // SET RESUME SPAWN HERE       
-        if (1 === 1) {
-            const modalWidth = resumeViewerModal.offsetWidth;
-            const modalHeight = resumeViewerModal.offsetHeight;
-        
-            // Get viewport dimensions
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
-        
-            // Calculate maximum allowable positions
-            const maxLeft = viewportWidth - modalWidth;
-            const maxTop = viewportHeight - modalHeight;
-        
-            // Set initial position
-            let desiredLeft = 0; // Your desired left position
-            let desiredTop = 0;   // Your desired top position
-        
-            // Adjust positions if they exceed viewport bounds
-            if (desiredLeft > maxLeft) {
-                desiredLeft = maxLeft;
-            }
-            if (desiredTop > maxTop) {
-                desiredTop = maxTop;
-            }
-        
-            // Set modal position
-            musicPlayerModal.style.left = `${desiredLeft}px`;
-            musicPlayerModal.style.top = `${desiredTop}px`;
-
-
-
-
-        }
-         
-
-    }
-
-    // Hide modal only when clicking on close button
-    resumeViewerCloseButton.onclick = function() {
-        resumeViewerModal.style.display = 'none';
-        
-
-    }
-
-    // Function to handle mouse down event on modal header for dragging
-    resumeViewerModalHeader.addEventListener('mousedown', function(e) {
-        isResumeViewerDragging = true;
-        // Calculate offset relative to the top-left corner of the modal
-        resumeViewerOffset.x = e.clientX - resumeViewerModal.offsetLeft;
-        resumeViewerOffset.y = e.clientY - resumeViewerModal.offsetTop;
-    });
-
-    // Function to handle mouse move event when dragging
-    document.addEventListener('mousemove', function(e) {
-        if (isResumeViewerDragging) {
-            // Update modal position based on mouse movement
-            resumeViewerModal.style.left = (e.clientX - resumeViewerOffset.x) + 'px';
-            resumeViewerModal.style.top = (e.clientY - resumeViewerOffset.y) + 'px';
-        }
-    });
-
-    // Function to handle mouse up event to stop dragging
-    document.addEventListener('mouseup', function() {
-        isResumeViewerDragging = false;
-    });
-
-    // ************************* Drag Photo Gallery
-    var photosGalleryModal = document.getElementById('photos-gallery');
-    var photosGalleryCloseButton = photosGalleryModal.querySelector('.close');
-    var photosGalleryModalHeader = photosGalleryModal.querySelector('.modal-header');
-
-    var isPhotosGalleryDragging = false;
-    var photosGalleryOffset = {x: 0, y: 0};
-
-    // Show modal when clicking on Photos icon
-    document.getElementById('photos-icon').onclick = function() {
-        photosGalleryModal.style.display = 'block';
-        // PHOTOS SPAWN
-        if (1 === 1) {
-            // Define modal dimensions
-            const modalWidth = photosGalleryModal.offsetWidth;
-            const modalHeight = photosGalleryModal.offsetHeight;
-        
-            // Get viewport dimensions
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
-        
-            // Calculate maximum allowable positions
-            const maxLeft = viewportWidth - modalWidth;
-            const maxTop = viewportHeight - modalHeight;
-        
-            // Set initial position
-            let desiredLeft = 500; // Your desired left position
-            let desiredTop = 400;   // Your desired top position
-        
-            // Adjust positions if they exceed viewport bounds
-            if (desiredLeft > maxLeft) {
-                desiredLeft = maxLeft;
-            }
-            if (desiredTop > maxTop) {
-                desiredTop = maxTop;
-            }
-        
-            // Set modal position
-            photosGalleryModal.style.left = `${desiredLeft}px`;
-            photosGalleryModal.style.top = `${desiredTop}px`;
-        }
-            }
-
-    // Hide modal only when clicking on close button
-    photosGalleryCloseButton.onclick = function() {
-        photosGalleryModal.style.display = 'none';
-    }
-
-
-
-
-    // Function to handle mouse down event on modal header for dragging
-    photosGalleryModalHeader.addEventListener('mousedown', function(e) {
-        isPhotosGalleryDragging = true;
-        // Calculate offset relative to the top-left corner of the modal
-        photosGalleryOffset.x = e.clientX - photosGalleryModal.offsetLeft;
-        photosGalleryOffset.y = e.clientY - photosGalleryModal.offsetTop;
-    });
-
-    // Function to handle mouse move event when dragging
-    document.addEventListener('mousemove', function(e) {
-        if (isPhotosGalleryDragging) {
-            // Update modal position based on mouse movement
-            photosGalleryModal.style.left = (e.clientX - photosGalleryOffset.x) + 'px';
-            photosGalleryModal.style.top = (e.clientY - photosGalleryOffset.y) + 'px';
-        }
-    });
-
-    // Function to handle mouse up event to stop dragging
-    document.addEventListener('mouseup', function() {
-        isPhotosGalleryDragging = false;
-    });
-
+    // Setup each modal with its initial position
+    setupModal('system-preferences', 'system-preferences-icon', { left: 800, top: 200});
+    setupModal('music-player', 'music-icon', { left: 1000, top: 300 });
+    setupModal('resume-viewer', 'resume-icon', { left: 0, top: 0 });
+    setupModal('photos-gallery', 'photos-icon', { left: 400, top: 100 });
+    setupModal('project-modal', 'projects-icon', { left: 50, top: 100 });
+    setupModal('snake-modal', 'snake-icon', { left: 500, top: 50 });
 });
-
-
-  // ************************* Drag Photo Gallery
-  var projectModal = document.getElementById('project-modal');
-  var projectCloseButton = projectModal.querySelector('.close');
-  var projectModalHeader = projectModal.querySelector('.modal-header');
-  
-  
-
-  var isProjDragging = false;
-  var projOffset= {x: 0, y: 0};
-
-  // Show modal when clicking on Proj icon
-  document.getElementById('projects-icon').onclick = function() {
-      projectModal.style.display = 'block';
-      // Projects SPAWN
-      if (1 === 1) {
-          // Define modal dimensions
-          const modalWidth = projectModal.offsetWidth;
-          const modalHeight = projectModal.offsetHeight;
-      
-          // Get viewport dimensions
-          const viewportWidth = window.innerWidth;
-          const viewportHeight = window.innerHeight;
-      
-          // Calculate maximum allowable positions
-          const maxLeft = viewportWidth - modalWidth;
-          const maxTop = viewportHeight - modalHeight;
-      
-          // Set initial position
-          let desiredLeft = 500; // Your desired left position
-          let desiredTop = 400;   // Your desired top position
-      
-          // Adjust positions if they exceed viewport bounds
-          if (desiredLeft > maxLeft) {
-              desiredLeft = maxLeft;
-          }
-          if (desiredTop > maxTop) {
-              desiredTop = maxTop;
-          }
-      
-          // Set modal position
-          projectModal.style.left = `${desiredLeft}px`;
-          projectModal.style.top = `${desiredTop}px`;
-      }
-          }
-
-  // Hide modal only when clicking on close button
-  projectCloseButton.onclick = function() {
-      projectModal.style.display = 'none';
-  }
-
-
-
-
-  // Function to handle mouse down event on modal header for dragging
-  projectModalHeader.addEventListener('mousedown', function(e) {
-      isProjDragging = true;
-      // Calculate offset relative to the top-left corner of the modal
-      projOffset.x = e.clientX - projectModal.offsetLeft;
-      projOffset.y = e.clientY - projectModal.offsetTop;
-  });
-
-  // Function to handle mouse move event when dragging
-  document.addEventListener('mousemove', function(e) {
-      if (isProjDragging) {
-          // Update modal position based on mouse movement
-          projectModal.style.left = (e.clientX - projOffset.x) + 'px';
-          projectModal.style.top = (e.clientY - projOffset.y) + 'px';
-      }
-  });
-
-  // Function to handle mouse up event to stop dragging
-  document.addEventListener('mouseup', function() {
-      isProjDragging = false;
-  });
-
 
 /// END DRAG BLOCK
 
@@ -391,10 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; i <= numberOfBackgrounds; i++) {
         backgrounds.push({ src: `images/wallpaper/background${i}.jpg`, alt: `Background ${i}` });
     }
-
-
-
-
 
 
     let selectedBackground = "";

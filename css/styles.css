@@ -58,9 +58,12 @@ body {
 /* Change size of linkedin icon to match Projects folder size */
 .icon-container .icon#linkedin-icon img {
     padding: 10px;
-
 }
-
+/* Change size of linkedin icon to match Projects folder size */
+.icon-container .icon#snake-icon img {
+    padding: 10px;
+    border-radius: 20px
+}
 .icon img {
     width: 100px;
     height: 100px;
@@ -124,10 +127,10 @@ body {
     z-index: 1;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
     width: 300px;
-    max-width: 30vw;
-    max-height: 50vh;
+    /* max-width: 30vw; */
+    /* max-height: 50vh; */
 
     background-color: #fefefe;
     padding: 20px;
@@ -154,6 +157,18 @@ body {
 .project-modal {
     width: 500px;  /* Desired width for the project modal */
     height: 500px; /* Desired height for the project modal */
+}
+
+.snake-game-modal {
+    width: 800px;  /* Desired width for the project modal */
+    height: 530px;
+    
+/* 
+
+width: 800px;  
+height: 550px; 
+*/
+
 }
 
 
@@ -336,8 +351,6 @@ body {
 }
 
 
-
-
 /* Styling for the resume viewer modal */
 #resume-viewer {
     display: none;
@@ -435,15 +448,6 @@ body {
 }
 
 
-
-
-
-
-/* Change size of resume icon to match Projects folder size */
-
-
-
-
 /* Project icons (Reminders) */
 .project-icon {
     position: relative;
@@ -484,11 +488,9 @@ body {
 }
 
 /* Main Game Container */
-#game-container {
+#snake-modal .modal-body {
     display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 20px;
+    gap: 20px; /* Space between the game board and the right side container */
 }
 
 /* Game Board Styling */
@@ -513,7 +515,7 @@ body {
 .apple {
     background-size: cover;
     background-position: center;
-    border-radius:45%;
+    border-radius: 45%;
 }
 
 /* Enlarged Apple Preview Styling */
@@ -521,8 +523,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 200px; /* Max width for the preview container */
-    max-width: 200px; /* Ensuring no overflow beyond 150px */
+    max-width: 200px; /* Max width for the preview container */
     text-align: center;
 }
 
@@ -544,14 +545,14 @@ body {
 /* Score Display */
 #score-display {
     font-size: 18px;
-    color: #333;
+    color: #f02727;
     font-weight: bold;
     margin-top: 20px;
 }
 
 #max-score-display {
-    font-size: 16px;
-    color: #333;
+    font-size: 18px;
+    color: #4ba505;
     font-weight: bold;
     margin-top: 20px;
 }
