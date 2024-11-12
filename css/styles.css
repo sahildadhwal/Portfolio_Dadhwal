@@ -473,5 +473,85 @@ body {
 
 
 
+/* ================================================================================================ */
+/* Snake Game CSS */
 
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+/* Main Game Container */
+#game-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Game Board Styling */
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(20, 20px);
+    grid-template-rows: repeat(20, 20px);
+    background-color: #333;
+    border: 2px solid #000;
+    width: 400px;
+    height: 400px;
+    position: relative;
+}
+
+/* Snake Styling */
+.snake {
+    background-color: #4CAF50;
+    border-radius: 4px;
+}
+
+/* Apple Styling */
+.apple {
+    background-size: cover;
+    background-position: center;
+    border-radius:45%;
+}
+
+/* Enlarged Apple Preview Styling */
+#apple-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px; /* Max width for the preview container */
+    max-width: 200px; /* Ensuring no overflow beyond 150px */
+    text-align: center;
+}
+
+#apple-preview h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+#apple-preview-image {
+    width: 200px; /* Controlled width */
+    height: 200px; /* Controlled height */
+    object-fit: cover;
+    border: 2px solid #333;
+    border-radius: 8px;
+    max-width: 100%; /* Responsive constraint */
+}
+
+/* Score Display */
+#score-display {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#max-score-display {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    margin-top: 20px;
+}
