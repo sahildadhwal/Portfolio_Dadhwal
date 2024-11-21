@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const numberOfBackgrounds = 12; // Adjust this number as needed
 
     for (let i = 1; i <= numberOfBackgrounds; i++) {
-        backgrounds.push({ src: `/images/wallpaper/background${i}.jpg`, alt: `Background ${i}` });
+        backgrounds.push({ src: `../images/wallpaper/background${i}.jpg`, alt: `Background ${i}` });
     }
 
 
@@ -143,11 +143,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Array of audio details
     const audioDetails = [
-        { song: "Feel It", artist: "d4vd", src: "/audio/Feel It by d4vd.mp3" },
-        { song: "Meet Me Halfway", artist: "Black Eyed Peas", src: "/audio/Meet Me Halfway by Black Eyed Peas.mp3" },
-        { song: "Sweater Weather", artist: "The Neighbourhood", src: "/audio/Sweater Weather by The Neighbourhood.mp3" },
-        { song: "Trophies", artist: "Drake", src: "/audio/Trophies by Drake.mp3" },
-        { song: "Not Like Us", artist: "Kendrick Lamar", src: "/audio/Not Like Us by Kendrick Lamar.mp3" }
+        { song: "Feel It", artist: "d4vd", src: "../audio/Feel It by d4vd.mp3" },
+        { song: "Meet Me Halfway", artist: "Black Eyed Peas", src: "../audio/Meet Me Halfway by Black Eyed Peas.mp3" },
+        { song: "Sweater Weather", artist: "The Neighbourhood", src: "../audio/Sweater Weather by The Neighbourhood.mp3" },
+        { song: "Trophies", artist: "Drake", src: "../audio/Trophies by Drake.mp3" },
+        { song: "Not Like Us", artist: "Kendrick Lamar", src: "../audio/Not Like Us by Kendrick Lamar.mp3" }
     ];
 
     let currentAudioElement = null;
@@ -266,7 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const numberOfPhotos = 20; // Adjust this number as needed
 
     for (let i = 1; i <= numberOfPhotos; i++) {
-        photos.push({ src: `/images/photos/photo${i}.jpg`, alt: `Photo ${i}` });
+        photos.push({ src: `../images/photos/photo${i}.jpg`, alt: `Photo ${i}` });
     }
 
     // Function to preload images
