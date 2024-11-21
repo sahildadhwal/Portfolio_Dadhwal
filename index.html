@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome | Sahil Dadhwal's Portfolio</title>
+    <!-- Ensure CSS path is correct (relative to where the index.html is hosted) -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     
+    <!-- Clouds Section -->
     <div class="clouds">
         <div class="cloud"></div>
         <div class="cloud"></div>
         <div class="cloud"></div>    
     </div>
     
-
-            
+    <!-- Main Content -->
     <div class="container">
         <h1>Welcome to Sahil's Portfolio</h1>
         <img src="images/photos/photo24.jpg" alt="Sahil Dadhwal" class="profile-pic" onclick="openModal()">
         <a href="html/web.html" class="button">Web</a>
         <a href="html/mobile.html" class="button">Mobile</a>
 
-
+        <!-- Icon Links (Ensure the icons exist in the "images/icons/" folder) -->
         <div class="icon-links">
             <a href="https://linkedin.com/in/sahildadhwal/" target="_blank" class="icon" title="LinkedIn">
                 <img src="images/icons/linkedin-icon.png" alt="LinkedIn">
@@ -34,10 +37,9 @@
                 <img src="images/icons/resume-icon.png" alt="Resume">
             </a>
         </div>
-    
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Section -->
     <div id="profile-modal" class="modal">
         <div class="modal-content">
             <h2>About Sahil</h2>
@@ -46,6 +48,7 @@
     </div>
 
     <script>
+        // Function to open the default mail client
         function openMailClient() {
             const email = "sahildadhwal2001@gmail.com";
             const subject = "I Came from your Portfolio! :D";
@@ -53,7 +56,7 @@
             window.location.href = mailtoLink;
         }
 
-        // Open modal
+        // Open the profile modal when clicking the profile picture
         function openModal() {
             const modal = document.getElementById('profile-modal');
             modal.style.display = 'flex';
@@ -68,6 +71,6 @@
         };
     </script>
 
-
 </body>
+
 </html>
