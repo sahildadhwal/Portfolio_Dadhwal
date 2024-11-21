@@ -4,8 +4,8 @@ const applePreviewImage = document.getElementById('apple-preview-image');
 const scoreDisplay = document.getElementById('score-display');
 const maxScoreDisplay = document.getElementById('max-score-display');
 
-const eatSound = new Audio('audio/short/rizz.mp3');
-const deathSound = new Audio('audio/short/spongefail.mp3');
+const eatSound = new Audio('/audio/short/rizz.mp3');
+const deathSound = new Audio('/audio/short/spongefail.mp3');
 
 const boardSize = 20;
 let snake = [{ x: 10, y: 10 }];
@@ -16,13 +16,13 @@ let maxScore = localStorage.getItem('maxScore') ? parseInt(localStorage.getItem(
 
 // List of images
 const images = [
-  'images/photos/photo1.jpg', 'images/photos/photo2.jpg', 'images/photos/photo3.jpg', 'images/photos/photo4.jpg', 
-  'images/photos/photo5.jpg', 'images/photos/photo6.jpg', 'images/photos/photo7.jpg', 'images/photos/photo8.jpg', 
-  'images/photos/photo9.jpg', 'images/photos/photo10.jpg', 'images/photos/photo11.jpg', 'images/photos/photo12.jpg', 
-  'images/photos/photo13.jpg', 'images/photos/photo14.jpg', 'images/photos/photo15.jpg', 'images/photos/photo16.jpg', 
-  'images/photos/photo17.jpg', 'images/photos/photo18.jpg', 'images/photos/photo19.jpg', 'images/photos/photo20.jpg', 
-  'images/photos/photo21.jpg', 'images/photos/photo22.jpg', 'images/photos/photo23.jpg', 'images/photos/photo24.jpg', 
-  'images/photos/photo25.jpg', 'images/photos/photo26.jpg', 'images/photos/photo27.jpg'
+  '/images/photos/photo1.jpg', '/images/photos/photo2.jpg', '/images/photos/photo3.jpg', '/images/photos/photo4.jpg', 
+  '/images/photos/photo5.jpg', '/images/photos/photo6.jpg', '/images/photos/photo7.jpg', '/images/photos/photo8.jpg', 
+  '/images/photos/photo9.jpg', '/images/photos/photo10.jpg', '/images/photos/photo11.jpg', '/images/photos/photo12.jpg', 
+  '/images/photos/photo13.jpg', '/images/photos/photo14.jpg', '/images/photos/photo15.jpg', '/images/photos/photo16.jpg', 
+  '/images/photos/photo17.jpg', '/images/photos/photo18.jpg', '/images/photos/photo19.jpg', '/images/photos/photo20.jpg', 
+  '/images/photos/photo21.jpg', '/images/photos/photo22.jpg', '/images/photos/photo23.jpg', '/images/photos/photo24.jpg', 
+  '/images/photos/photo25.jpg', '/images/photos/photo26.jpg', '/images/photos/photo27.jpg'
 ];
 
 // Add a queue to track available images

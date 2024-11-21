@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Sahil Dadhwal's Portfolio</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    
+
+</head>
+<body>
+    
+    <div class="clouds">
+        <div class="cloud"></div>
+        <div class="cloud"></div>
+        <div class="cloud"></div>    
+    </div>
+    
+
+            
+    <div class="container">
+        <h1>Welcome to Sahil's Portfolio</h1>
+        <img src="/images/photos/photo24.jpg" alt="Sahil Dadhwal" class="profile-pic" onclick="openModal()">
+        <a href="/html/web.html" class="button">Web</a>
+        <a href="/html/mobile.html" class="button">Mobile</a>
+
+
+        <div class="icon-links">
+            <a href="https://linkedin.com/in/sahildadhwal/" target="_blank" class="icon" title="LinkedIn">
+                <img src="/images/icons/linkedin-icon.png" alt="LinkedIn">
+            </a>
+            <a href="javascript:openMailClient();" class="icon" title="Email Me">
+                <img src="/images/icons/mail-icon.png" alt="Email">
+            </a>
+            <a href="/files/Sahil_Dadhwal_Resume.pdf" download="Sahil_Dadhwal_Resume.pdf" class="icon" title="Download Resume">
+                <img src="/images/icons/resume-icon.png" alt="Resume">
+            </a>
+        </div>
+    
+    </div>
+
+    <!-- Modal -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <h2>About Sahil</h2>
+            <p>Hello! I'm Sahil Dadhwal, a passionate software engineer with expertise in Python, REST APIs, and database systems. I enjoy solving problems and building creative solutions.</p>
+        </div>
+    </div>
+
+    <script>
+        function openMailClient() {
+            const email = "sahildadhwal2001@gmail.com";
+            const subject = "I Came from your Portfolio! :D";
+            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+            window.location.href = mailtoLink;
+        }
+
+        // Open modal
+        function openModal() {
+            const modal = document.getElementById('profile-modal');
+            modal.style.display = 'flex';
+        }
+
+        // Close modal when clicking outside the content
+        window.onclick = function (event) {
+            const modal = document.getElementById('profile-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+
+
+</body>
+</html>
