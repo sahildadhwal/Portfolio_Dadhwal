@@ -9,8 +9,8 @@ let highScore = localStorage.getItem('snakeHighScore') || 0;
 const gridSize = 20;
 const gameSpeed = 100;
 
-const eatSound = new Audio('../audio/short/rizz.mp3');
-const deathSound = new Audio('../audio/short/spongefail.mp3');
+const eatSound = new Audio('audio/short/rizz.mp3');
+const deathSound = new Audio('audio/short/spongefail.mp3');
 
 const previewImages = Array.from({ length: 27 }, (_, i) => `images/photos/photo${i + 1}.jpg`);
 let currentImageIndex = 0;
@@ -27,6 +27,38 @@ function updatePreviewImage() {
     previewImg.src = previewImages[currentImageIndex];
 }
 
+// Variables for swipe tracking
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+// Detect swipe direction
+function handleSwipe() {
+    const swipeThreshold = 50; // Minimum swipe distance in pixels
+
+    const diffX = touchEndX - touchStartX;
+    const diffY = touchEndY - touchStartY;
+
+    // Horizontal swipe (left or right)
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > swipeThreshold) {
+        if (diffX > 0 && direction !== 'left') {
+            direction = 'right'; // Swipe right
+        } else if (diffX < 0 && direction !== 'right') {
+            direction = 'left'; // Swipe left
+        }
+    }
+
+    // Vertical swipe (up or down)
+    if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > swipeThreshold) {
+        if (diffY > 0 && direction !== 'up') {
+            direction = 'down'; // Swipe down
+        } else if (diffY < 0 && direction !== 'down') {
+            direction = 'up'; // Swipe up
+        }
+    }
+}
+
 // Initialize game
 function initGame() {
     canvas = document.getElementById('game-board');
@@ -35,6 +67,24 @@ function initGame() {
     document.getElementById('highScore').textContent = highScore;
     updatePreviewImage();
     startGame();
+
+    // Initialize touch event listeners for swipe functionality
+    canvas.addEventListener('touchstart', function(e) {
+        const touch = e.touches[0]; 
+        touchStartX = touch.pageX;
+        touchStartY = touch.pageY;
+    });
+
+    canvas.addEventListener('touchmove', function(e) {
+        e.preventDefault(); // Prevent default scrolling behavior
+        const touch = e.touches[0]; 
+        touchEndX = touch.pageX;
+        touchEndY = touch.pageY;
+    });
+
+    canvas.addEventListener('touchend', function(e) {
+        handleSwipe();
+    });
 }
 
 // Reset the game state to the initial values
@@ -187,4 +237,3 @@ window.onclick = function(event) {
         closeSnakeModal();
     }
 }
-
