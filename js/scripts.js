@@ -12,7 +12,7 @@ const gameSpeed = 100;
 const eatSound = new Audio('../audio/short/rizz.mp3');
 const deathSound = new Audio('../audio/short/spongefail.mp3');
 
-const previewImages = Array.from({ length: 27 }, (_, i) => `/images/photos/photo${i + 1}.jpg`);
+const previewImages = Array.from({ length: 27 }, (_, i) => `images/photos/photo${i + 1}.jpg`);
 let currentImageIndex = 0;
 
 function updatePreviewImage() {
