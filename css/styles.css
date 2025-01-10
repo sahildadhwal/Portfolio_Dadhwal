@@ -357,35 +357,41 @@ nav {
 
 .timeline-item {
     position: relative;
-    width: 50%;
-    padding: 1rem 1.5rem;
-    cursor: pointer;
+    margin: 2rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
-.timeline-item.left {
-    left: 0;
-    text-align: right;
-}
-
-.timeline-item.right {
+/* Timeline dot */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary);
+    border: 0px solid white;
+    border-radius: 50%;
+    top: 50%;
     left: 50%;
-    text-align: left;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.timeline-item:hover .timeline-content {
-    background-color: #f0f9ff;
-}
-
-.timeline-item.left .timeline-content {
-    margin-left: auto;
-}
-
-.timeline-item.right .timeline-content {
-    margin-right: auto;
+.timeline-date {
+    position: absolute;
+    width: 45%;
+    padding: 1rem;
+    text-align: right;
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: var(--secondary);
 }
 
 .timeline-content {
     position: relative;
+    width: 45%;
     padding: 1.5rem;
     background: #ffffff;
     border-radius: 6px;
@@ -394,11 +400,31 @@ nav {
     transition: background-color 0.3s ease;
 }
 
-.timeline-date {
-    font-weight: 500;
-    font-size: 1.125rem;
-    margin-bottom: 0.5rem;
-    color: var(--secondary);
+/* Left side items */
+.timeline-item.left .timeline-date {
+    right: 55%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.timeline-item.left .timeline-content {
+    margin-left: 55%;
+}
+
+/* Right side items */
+.timeline-item.right .timeline-date {
+    left: 55%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+}
+
+.timeline-item.right .timeline-content {
+    margin-right: 55%;
+}
+
+.timeline-content:hover {
+    background-color: #f0f9ff;
 }
 
 .timeline-title {
@@ -409,4 +435,42 @@ nav {
 
 .timeline-description {
     color: #64748b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 0;
+    }
+    
+    .timeline-item {
+        flex-direction: column;
+        margin: 3rem 0;
+    }
+    
+    .timeline-item::after {
+        left: 0;
+        transform: translate(-50%, 0);
+        top: 1.5rem;
+    }
+    
+    .timeline-date,
+    .timeline-item.left .timeline-date,
+    .timeline-item.right .timeline-date {
+        position: relative;
+        width: 100%;
+        text-align: left;
+        right: auto;
+        left: 2rem;
+        top: auto;
+        transform: none;
+        margin-bottom: 1rem;
+    }
+    
+    .timeline-content,
+    .timeline-item.left .timeline-content,
+    .timeline-item.right .timeline-content {
+        width: calc(100% - 2rem);
+        margin: 0 0 0 2rem;
+    }
 }
